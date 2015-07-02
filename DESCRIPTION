@@ -1,8 +1,10 @@
 Package: cloc
-Title: What the Package Does (one line, title case)
+Title: Count Lines of Code, Comments and Whitespace in Source Files and Archives
 Version: 0.0.0.9000
 Authors@R: c(person("Bob", "Rudis", email = "bob@rudis.net", role = c("aut", "cre")))
-Description: What the package does (one paragraph).
-Depends: R (>= 3.2.1)
+Description: Count lines of code!
+Imports: R.utils, utils, dplyr, pbapply
+Depends: R (>= 3.2.0)
 License: MIT + file LICENSE
 LazyData: true
+Suggests: testthat
