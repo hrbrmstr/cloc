@@ -1,7 +1,5 @@
 ---
-output:
-  md_document:
-    variant: markdown_github
+output: rmarkdown::github_document
 ---
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
@@ -14,22 +12,26 @@ knitr::opts_chunk$set(
 )
 ```
 
-[![Build Status](https://travis-ci.org/hrbrmstr/cloc.svg)](https://travis-ci.org/hrbrmstr/cloc) 
-![Project Status: Concept - Minimal or no implementation has been done yet.](http://www.repostatus.org/badges/0.1.0/concept.svg)](http://www.repostatus.org/#concept)
-[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/cloc)](http://cran.r-project.org/web/packages/cloc) 
-![downloads](http://cranlogs.r-pkg.org/badges/grand-total/cloc)
+![Project Status: Concept - Minimal or no implementation has been done yet.](http://www.repostatus.org/badges/0.1.0/concept.svg)
 
-cloc is ...
+# cloc
+
+Count Lines of Code, Comments and Whitespace in Source Files and Archives
+
+## Description
+
+Counts blank lines, comment lines, and physical lines of source code in source 
+files/trees/archives. An R wrapper to the Perl `cloc` utility 
+<https://github.com/AlDanial/cloc> by @AlDanial.
+
+## What's Inside The Tin
 
 The following functions are implemented:
 
-The following data sets are included:
+- `cloc`:	Count lines of code, comments and whitespace in source files/archives
+- `cloc_cran`:	Count lines of code (etc) from source packages on CRAN
 
-### News
-
-- Version  released
-
-### Installation
+## Usage
 
 ```{r eval=FALSE}
 devtools::install_github("hrbrmstr/cloc")
@@ -39,28 +41,33 @@ devtools::install_github("hrbrmstr/cloc")
 options(width=120)
 ```
 
-### Usage
-
-```{r}
+```{r message=FALSE, warning=FALSE, error=FALSE}
 library(cloc)
 
 # current verison
 packageVersion("cloc")
-
 ```
 
-### Test Results
+Basic usage
 
-```{r}
-library(cloc)
-library(testthat)
+```{r message=FALSE, warning=FALSE, error=FALSE}
+# by dir
+cloc(system.file("extdata", package="cloc"))
 
-date()
+# by file
+cloc(system.file("extdata", "App.java", package="cloc"))
 
-test_dir("tests/")
+# from a url
+cloc("https://rud.is/dl/cloc-1.74.tar.gz")
 ```
 
-### Code of Conduct
+Custom CRAN package counter:
+
+```{r message=FALSE, warning=FALSE, error=FALSE}
+cloc_cran(c("archdata", "hrbrthemes", "iptools", "dplyr"))
+```
+
+## Code of Conduct
 
 Please note that this project is released with a [Contributor Code of Conduct](CONDUCT.md). 
 By participating in this project you agree to abide by its terms.
