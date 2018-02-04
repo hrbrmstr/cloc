@@ -5,7 +5,7 @@
 \title{Count lines of code (etc) from source packages on CRAN}
 \usage{
 cloc_cran(pkgs, repos = getOption("repos"),
-  contrib_url = utils::ontrib.url(repos, "source"),
+  contrib_url = utils::contrib.url(repos, "source"),
   .progress = interactive())
 }
 \arguments{
