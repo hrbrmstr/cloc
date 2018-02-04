@@ -2,7 +2,7 @@
 #'
 #' Counts blank lines, comment lines, and physical lines of source code in source
 #' files/trees/archives. An R wrapper to the Perl `cloc` utility
-#' <https://github.com/AlDanial/cloc> by @AlDanial.
+#' <https://github.com/AlDanial/cloc> by @@AlDanial.
 #'
 #' @md
 #' @name cloc-package

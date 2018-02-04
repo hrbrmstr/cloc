@@ -24,7 +24,7 @@ cloc <- function(source, extract_with=NULL) {
 
   if (perl == "") {
     stop(
-      "Cannot find 'perl'. cloc required perl to be installed and on the PATH.",
+      "Cannot find 'perl'. cloc requires perl to be installed and on the PATH.",
        call. = FALSE
       )
   }
