@@ -1,14 +1,5 @@
-# Sample .travis.yml for R projects
+# R for travis: see documentation at https://docs.travis-ci.com/user/languages/r
 
-language: r
-warnings_are_errors: true
-sudo: required
-
-env:
- global:
-   - CRAN: http://cran.rstudio.com
-
-notifications:
-  email:
-    on_success: change
-    on_failure: change
+language: R
+sudo: false
+cache: packages

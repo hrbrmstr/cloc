@@ -1,8 +1,12 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-![Project Status: Concept - Minimal or no implementation has been done
-yet.](http://www.repostatus.org/badges/0.1.0/concept.svg)
+[![Travis-CI Build
+Status](https://travis-ci.org/hrbrmstr/cloc.svg?branch=master)](https://travis-ci.org/hrbrmstr/cloc)
+[![AppVeyor Build
+Status](https://ci.appveyor.com/api/projects/status/github/hrbrmstr/cloc?branch=master&svg=true)](https://ci.appveyor.com/project/hrbrmstr/cloc)
+[![Coverage
+Status](https://img.shields.io/codecov/c/github/hrbrmstr/cloc/master.svg)](https://codecov.io/github/hrbrmstr/cloc?branch=master)
 
 # cloc
 

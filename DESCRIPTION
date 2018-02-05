@@ -12,14 +12,15 @@ Description: Counts blank lines, comment lines, and physical lines of source cod
     <https://github.com/AlDanial/cloc>.
 SystemRequirements: perl
 Copyright: file inst/COPYRIGHTS
-Imports: 
+Imports:
   R.utils, 
   utils, 
   dplyr
 Encoding: UTF-8
-Depends: 
+Depends:
   R (>= 3.2.0)
 License: MIT + file LICENSE
 LazyData: true
-Suggests: testthat
+Suggests: testthat,
+    covr
 RoxygenNote: 6.0.1.9000
