@@ -34,7 +34,7 @@ cloc_cran <- function(pkgs,
     stringsAsFactors = FALSE
   ) -> res_p
 
-  #
+  # call "cloc" on each package archive, bind results into a single data frame
   if (.progress) pb <- dplyr::progress_estimated(length(res_p$V2))
   dplyr::bind_rows(
     lapply(res_p$V2, function(x) {
