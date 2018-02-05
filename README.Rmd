@@ -29,7 +29,11 @@ files/trees/archives. An R wrapper to the Perl `cloc` utility
 The following functions are implemented:
 
 - `cloc`:	Count lines of code, comments and whitespace in source files/archives
+- `cloc_by_file`:	Count lines of code, comments and whitespace in source files/archives by file
 - `cloc_cran`:	Count lines of code (etc) from source packages on CRAN
+- `cloc_git`:	Count lines of code, comments and whitespace in a git tree
+- `cloc_remove_comments`:	Strip comments and white space from a single source file
+- `cloc_reognized_languages`:	Return a data frame of 'cloc' recognized languages and associated extensions
 
 ## Usage
 
@@ -65,6 +69,36 @@ Custom CRAN package counter:
 
 ```{r message=FALSE, warning=FALSE, error=FALSE}
 cloc_cran(c("archdata", "hrbrthemes", "iptools", "dplyr"))
+```
+
+git tree (with specific commit)
+
+```{r message=FALSE, warning=FALSE, error=FALSE}
+cloc_git("~/packages/cloc", "3643cd09d4b951b1b35d32dffe35985dfe7756c4")
+```
+
+Detailed results by file
+
+```{r message=FALSE, warning=FALSE, error=FALSE}
+# whole dir
+str(cloc_by_file(system.file("extdata", package="cloc")))
+
+# single file
+str(cloc_by_file(system.file("extdata", "App.java", package="cloc")))
+```
+
+Recognized languages
+
+```{r message=FALSE, warning=FALSE, error=FALSE}
+cloc_reognized_languages()
+```
+
+Strip comments and whitespace from individual source files
+
+```{r message=FALSE, warning=FALSE, error=FALSE}
+cat(
+  cloc_remove_comments(system.file("extdata", "qrencoder.cpp", package="cloc"))
+)
 ```
 
 ## Code of Conduct

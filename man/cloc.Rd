@@ -7,9 +7,9 @@
 cloc(source, extract_with = NULL)
 }
 \arguments{
-\item{source}{file, directory or archive to read from}
+\item{source}{file, directory or archive to read from (can be a valid URL)}
 
-\item{extract_with}{passed into `cloc` command line. This option is only
+\item{extract_with}{passed into \code{cloc} command line. This option is only
 needed if cloc is unable to figure out how to extract the contents of
 the input file(s) by itself.}
 }

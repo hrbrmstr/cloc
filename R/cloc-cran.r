@@ -1,4 +1,3 @@
-
 #' Count lines of code (etc) from source packages on CRAN
 #'
 #' @md

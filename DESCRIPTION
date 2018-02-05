@@ -11,6 +11,7 @@ Description: Counts blank lines, comment lines, and physical lines of source cod
     in source files/trees/archives. An R wrapper to the 'Perl' command-line utility 
     <https://github.com/AlDanial/cloc>.
 SystemRequirements: perl
+Copyright: file inst/COPYRIGHTS
 Imports: 
   R.utils, 
   utils, 

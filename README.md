@@ -21,7 +21,15 @@ The following functions are implemented:
 
   - `cloc`: Count lines of code, comments and whitespace in source
     files/archives
+  - `cloc_by_file`: Count lines of code, comments and whitespace in
+    source files/archives by file
   - `cloc_cran`: Count lines of code (etc) from source packages on CRAN
+  - `cloc_git`: Count lines of code, comments and whitespace in a git
+    tree
+  - `cloc_remove_comments`: Strip comments and white space from a single
+    source file
+  - `cloc_reognized_languages`: Return a data frame of ‘cloc’ recognized
+    languages and associated extensions
 
 ## Usage
 
@@ -110,6 +118,214 @@ cloc_cran(c("archdata", "hrbrthemes", "iptools", "dplyr"))
 #> 13            11      0.002504554      dplyr
 #> 14             0      0.000000000      dplyr
 #> 15             0      0.000000000      dplyr
+```
+
+git tree (with specific commit)
+
+``` r
+cloc_git("~/packages/cloc", "3643cd09d4b951b1b35d32dffe35985dfe7756c4")
+#> # A tibble: 4 x 10
+#>   source language file_count file_count_pct   loc      loc_pct blank_lines blank_line_pct comment_lines
+#>    <chr>    <chr>      <int>          <dbl> <int>        <dbl>       <int>          <dbl>         <int>
+#> 1   cloc     Perl          1          0.125 10059 0.9880168942         787    0.933570581          1292
+#> 2   cloc Markdown          2          0.250    60 0.0058933307          31    0.036773428             0
+#> 3   cloc        R          4          0.500    52 0.0051075533          22    0.026097272            25
+#> 4   cloc     YAML          1          0.125    10 0.0009822218           3    0.003558719             1
+#> # ... with 1 more variables: comment_line_pct <dbl>
+```
+
+Detailed results by file
+
+``` r
+# whole dir
+str(cloc_by_file(system.file("extdata", package="cloc")))
+#> Classes 'tbl_df', 'tbl' and 'data.frame':    3 obs. of  6 variables:
+#>  $ source       : chr  "extdata" "extdata" "extdata"
+#>  $ filename     : chr  "/Library/Frameworks/R.framework/Versions/3.4/Resources/library/cloc/extdata/qrencoder.cpp" "/Library/Frameworks/R.framework/Versions/3.4/Resources/library/cloc/extdata/dbi.r" "/Library/Frameworks/R.framework/Versions/3.4/Resources/library/cloc/extdata/App.java"
+#>  $ language     : chr  "C++" "R" "Java"
+#>  $ loc          : int  142 138 8
+#>  $ blank_lines  : int  41 24 1
+#>  $ comment_lines: int  63 71 4
+
+# single file
+str(cloc_by_file(system.file("extdata", "App.java", package="cloc")))
+#> Classes 'tbl_df', 'tbl' and 'data.frame':    1 obs. of  6 variables:
+#>  $ source       : chr "App.java"
+#>  $ filename     : chr "/Library/Frameworks/R.framework/Versions/3.4/Resources/library/cloc/extdata/App.java"
+#>  $ language     : chr "Java"
+#>  $ loc          : int 8
+#>  $ blank_lines  : int 1
+#>  $ comment_lines: int 4
+```
+
+Recognized languages
+
+``` r
+cloc_reognized_languages()
+#> # A tibble: 217 x 2
+#>              lang             extensions
+#>             <chr>                  <chr>
+#>  1           ABAP                   abap
+#>  2   ActionScript                     as
+#>  3            Ada     ada, adb, ads, pad
+#>  4      ADSO/IDSM                   adso
+#>  5          AMPLE ample, dofile, startup
+#>  6            Ant   build.xml, build.xml
+#>  7  ANTLR Grammar                  g, g4
+#>  8   Apex Trigger                trigger
+#>  9 Arduino Sketch               ino, pde
+#> 10            ASP               asa, asp
+#> # ... with 207 more rows
+```
+
+Strip comments and whitespace from individual source files
+
+``` r
+cat(
+  cloc_remove_comments(system.file("extdata", "qrencoder.cpp", package="cloc"))
+)
+#> #include <Rcpp.h>
+#> #include "qrencode.h"
+#> #include <stdio.h>
+#> #include <unistd.h>
+#> #include <string>
+#> #include <fstream>
+#> #include <streambuf>
+#> using namespace Rcpp;
+#> #define INCHES_PER_METER (100.0/2.54)
+#> static int rle = 1;
+#> static unsigned int fg_color[4] = {0, 0, 0, 255};
+#> static unsigned int bg_color[4] = {255, 255, 255, 255};
+#> NumericMatrix qrencode_raw(std::string to_encode,
+#>                            int version=0,
+#>                            int level=0,
+#>                            int hint=2,
+#>                            int caseinsensitive=1) {
+#>   QRcode *qrcode ;
+#>   unsigned char *row;
+#>   int x, y;
+#>   qrcode = QRcode_encodeString(to_encode.c_str(),
+#>                                version,
+#>                                (QRecLevel)level,
+#>                                (QRencodeMode)hint, caseinsensitive);
+#>   NumericMatrix qr(qrcode->width, qrcode->width);
+#>   for(y=0; y <qrcode->width; y++) {
+#>     row = qrcode->data+(y*qrcode->width);
+#>     for(x = 0; x < qrcode->width; x++) {
+#>       qr(x, y) = row[x]&0x1;
+#>     }
+#>   }
+#>   return(qr);
+#> }
+#> static FILE *openFile(const char *outfile) {
+#>   FILE *fp;
+#>   if(outfile == NULL || (outfile[0] == '-' && outfile[1] == '\0')) {
+#>     fp = stdout;
+#>   } else {
+#>     fp = fopen(outfile, "wb");
+#>     if (fp == NULL) return(NULL);
+#>   }
+#>   return fp;
+#> }
+#> static void writeSVG_writeRect(FILE *fp, int x, int y, int width, char* col, float opacity) {
+#>   if(fg_color[3] != 255) {
+#>     fprintf(fp, "\t\t\t<rect x=\"%d\" y=\"%d\" width=\"%d\" height=\"1\" "\
+#>               "fill=\"#%s\" fill-opacity=\"%f\" />\n",
+#>               x, y, width, col, opacity );
+#>   } else {
+#>     fprintf(fp, "\t\t\t<rect x=\"%d\" y=\"%d\" width=\"%d\" height=\"1\" "\
+#>               "fill=\"#%s\" />\n",
+#>               x, y, width, col );
+#>   }
+#> }
+#> CharacterVector writeSVG(QRcode *qrcode, int margin, int size, int dpi) {
+#>   FILE *fp;
+#>   unsigned char *row, *p;
+#>   int x, y, x0, pen;
+#>   int symwidth, realwidth;
+#>   float scale;
+#>   char fg[7], bg[7];
+#>   float fg_opacity;
+#>   float bg_opacity;
+#>   char fname[L_tmpnam];
+#>   memset(fname, 0, L_tmpnam);
+#>   strncpy(fname,"qrencoder-XXXXXX", 16);
+#>   fp = openFile(mktemp(fname));
+#>   if (fp == NULL) return(R_NilValue);
+#>   scale = dpi * INCHES_PER_METER / 100.0;
+#>   symwidth = qrcode->width + margin * 2;
+#>   realwidth = symwidth * size;
+#>   snprintf(fg, 7, "%02x%02x%02x", fg_color[0], fg_color[1],  fg_color[2]);
+#>   snprintf(bg, 7, "%02x%02x%02x", bg_color[0], bg_color[1],  bg_color[2]);
+#>   fg_opacity = (float)fg_color[3] / 255;
+#>   bg_opacity = (float)bg_color[3] / 255;
+#>   fputs( "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\n", fp );
+#>   fprintf( fp, "<!-- Created with qrencode %s (http:
+#>            QRcode_APIVersionString() );
+#>   fprintf( fp, "<svg width=\"%0.2fcm\" height=\"%0.2fcm\" viewBox=\"0 0 %d %d\""\
+#>              " preserveAspectRatio=\"none\" version=\"1.1\""                    \
+#>              " xmlns=\"http:
+#>              realwidth / scale, realwidth / scale, symwidth, symwidth
+#>   );
+#>   fputs( "\t<g id=\"QRcode\">\n", fp );
+#>   if(bg_color[3] != 255) {
+#>     fprintf(fp, "\t\t<rect x=\"0\" y=\"0\" width=\"%d\" height=\"%d\" fill=\"#%s\" fill-opacity=\"%f\" />\n", symwidth, symwidth, bg, bg_opacity);
+#>   } else {
+#>     fprintf(fp, "\t\t<rect x=\"0\" y=\"0\" width=\"%d\" height=\"%d\" fill=\"#%s\" />\n", symwidth, symwidth, bg);
+#>   }
+#>   fputs( "\t\t<g id=\"Pattern\">\n", fp);
+#>   p = qrcode->data;
+#>   for(y=0; y<qrcode->width; y++) {
+#>     row = (p+(y*qrcode->width));
+#>     if( !rle ) {
+#>       for(x=0; x<qrcode->width; x++) {
+#>         if(*(row+x)&0x1) {
+#>           writeSVG_writeRect(fp, margin + x,
+#>                              margin + y, 1,
+#>                              fg, fg_opacity);
+#>         }
+#>       }
+#>     } else {
+#>       pen = 0;
+#>       x0  = 0;
+#>       for(x=0; x<qrcode->width; x++) {
+#>         if( !pen ) {
+#>           pen = *(row+x)&0x1;
+#>           x0 = x;
+#>         } else {
+#>           if(!(*(row+x)&0x1)) {
+#>             writeSVG_writeRect(fp, x0 + margin, y + margin, x-x0, fg, fg_opacity);
+#>             pen = 0;
+#>           }
+#>         }
+#>       }
+#>       if( pen ) {
+#>         writeSVG_writeRect(fp, x0 + margin, y + margin, qrcode->width - x0, fg, fg_opacity);
+#>       }
+#>     }
+#>   }
+#>   fputs( "\t\t</g>\n", fp );
+#>   fputs( "\t</g>\n", fp );
+#>   fputs( "</svg>\n", fp );
+#>   fclose( fp );
+#>   std::ifstream t(fname);
+#>   std::string str((std::istreambuf_iterator<char>(t)),
+#>                   std::istreambuf_iterator<char>());
+#>   t.close();
+#>   unlink(fname);
+#>   return(Rcpp::wrap(str));
+#> }
+#> CharacterVector qrencode_svg(
+#>     std::string to_encode,
+#>     int version=0, int level=0, int hint=2,
+#>     int caseinsensitive=1, int margin = 0, int size = 3, int dpi = 72) {
+#>   QRcode *qrcode ;
+#>   qrcode = QRcode_encodeString(to_encode.c_str(),
+#>                                version,
+#>                                (QRecLevel)level,
+#>                                (QRencodeMode)hint, caseinsensitive);
+#>   return(writeSVG(qrcode, margin, size, dpi));
+#> }
 ```
 
 ## Code of Conduct
