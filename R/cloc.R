@@ -49,7 +49,7 @@ cloc <- function(source, extract_with=NULL) {
     source
   ) -> cmd
 
-  # tack on teh "--extract-with" value (if specified)
+  # tack on the "--extract-with" value (if specified)
   if (!is.null(extract_with)) cmd <- sprintf('%s --extract-with="%s"', cmd, extract_with)
 
   # run the perl script
