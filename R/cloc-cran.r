@@ -29,7 +29,7 @@ cloc_cran <- function(pkgs,
   # retrieve the package archive
   as.data.frame(
     utils::download.packages(
-      pkgs, destdir, repos = repos, contriburl = contrib_url, type = "source"
+      pkgs, destdir, repos = repos, contriburl = contrib_url, type = "source", quiet = TRUE
     ),
     stringsAsFactors = FALSE
   ) -> res_p

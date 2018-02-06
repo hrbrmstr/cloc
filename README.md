@@ -34,6 +34,11 @@ The following functions are implemented:
     source file
   - `cloc_reognized_languages`: Return a data frame of ‘cloc’ recognized
     languages and associated extensions
+  - `cloc_call`: Call ‘cloc.pl’ directly with granular control over
+    options
+  - `cloc_help`: See the command-line help
+  - `cloc_version`: Retrieve the version of the embedded perl script
+  - `cloc_os`: Ask the embedded perl script to detect the OS type
 
 ## Usage
 

@@ -20,9 +20,13 @@ test_that("core bits are functioning as expected", {
 
   expect_equal(bf$loc, 142)
 
+  expect_equal(cloc_version(), "1.74")
+
+  expect_is(cloc_os(), "character")
+
   skip_on_cran()
 
-  cran <- cloc_cran("dplyr", "https://cran.rstudio.com")
+  cran <- cloc_cran("dplyr", "https://cran.rstudio.com", .progress=FALSE)
 
   expect_equal(cran$language[1], "R")
 

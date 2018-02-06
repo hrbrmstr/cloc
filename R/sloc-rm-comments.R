@@ -36,9 +36,13 @@ cloc_remove_comments <- function(source_file) {
   curr_dir <- getwd()
   on.exit(setwd(curr_dir))
 
+  setwd(td)
+
   dat <- system(cmd, intern = TRUE)
 
   lines <- paste0(readLines(sprintf("%s.nc", basename(source_file))), collapse="\n")
+
+  unlink(sprintf("%s.nc", basename(source_file))) # clean up
 
   return(lines)
 

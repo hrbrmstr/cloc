@@ -57,4 +57,5 @@
 #' @importFrom R.utils isUrl
 #' @importFrom utils read.table contrib.url download.file download.packages tail
 #' @importFrom dplyr bind_rows progress_estimated data_frame
+#' @importFrom processx run
 NULL
