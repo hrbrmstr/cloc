@@ -29,7 +29,7 @@ cloc_by_file <- function(source, extract_with=NULL) {
 
   if (is_url) { # download the source if a URL was specified
     dir <- tempdir()
-    utils::download.file(source, file.path(dir, basename(source)), method = "curl")
+    utils::download.file(source, file.path(dir, basename(source)), method = "curl", quiet = TRUE)
     source <- file.path(dir, basename(source))
     on.exit(unlink(source), add = TRUE)
   }

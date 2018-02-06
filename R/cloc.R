@@ -19,7 +19,7 @@
 #' # from a url
 #' cloc("https://rud.is/dl/cloc-1.74.tar.gz")
 #' }
-cloc <- function(source, extract_with=NULL) {
+cloc <- function(source, extract_with = NULL) {
 
   perl <- Sys.which("perl")
 
@@ -34,7 +34,7 @@ cloc <- function(source, extract_with=NULL) {
 
   if (is_url) { # download the source if a URL was specified
     dir <- tempdir()
-    utils::download.file(source, file.path(dir, basename(source)), method = "curl")
+    utils::download.file(source, file.path(dir, basename(source)), method = "curl", quiet = TRUE)
     source <- file.path(dir, basename(source))
     on.exit(unlink(source), add = TRUE)
   }
