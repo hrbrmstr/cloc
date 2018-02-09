@@ -19,26 +19,30 @@ cloc_git <- function(repo_dir, commit=".") {
       )
   }
 
-  repo_dir <- path.expand(repo_dir)
+  repo_dir <-normalizePath(path.expand(repo_dir))
 
   stopifnot(file.exists(repo_dir))
 
   # make the command line
-
-  sprintf(
-    "%s %s --quiet --csv %s",
-    perl,
-    system.file("bin/cloc.pl", package = "cloc"),
-    commit
-  ) -> cmd
 
   curr_dir <- getwd()
 
   setwd(repo_dir)
   on.exit(setwd(curr_dir), add=TRUE)
 
+  x <- processx::run(
+    command = perl,
+    args = c(
+      system.file("bin/cloc.pl", package = "cloc"),
+      "--quiet",
+      "--git",
+      "--csv",
+      commit
+    )
+  )
+
   # run the perl script
-  dat <- system(cmd, intern = TRUE)
+  dat <- strsplit(x$stdout, "[\r\n]+")[[1]]
 
   # nothing to count
   if (length(dat) == 0) {

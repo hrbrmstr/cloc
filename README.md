@@ -129,6 +129,23 @@ cloc_cran(c("archdata", "hrbrthemes", "iptools", "dplyr"))
 #> 15             0      0.000000000      dplyr
 ```
 
+git tree
+
+``` r
+cloc_git("~/packages/cloc")
+#> # A tibble: 7 x 10
+#>   source language file_count file_count_pct   loc      loc_pct blank_lines blank_line_pct comment_lines
+#>    <chr>    <chr>      <int>          <dbl> <int>        <dbl>       <int>          <dbl>         <int>
+#> 1   cloc     Perl          1     0.04545455 10059 0.9119673617         787   0.7823061630          1292
+#> 2   cloc        R         11     0.50000000   433 0.0392565730         122   0.1212723658           310
+#> 3   cloc Markdown          3     0.13636364   351 0.0318223028          41   0.0407554672             0
+#> 4   cloc      C++          1     0.04545455   142 0.0128739801          41   0.0407554672            63
+#> 5   cloc     YAML          3     0.13636364    35 0.0031731641          14   0.0139165010             3
+#> 6   cloc     Java          1     0.04545455     8 0.0007252947           1   0.0009940358             4
+#> 7   cloc     JSON          2     0.09090909     2 0.0001813237           0   0.0000000000             0
+#> # ... with 1 more variables: comment_line_pct <dbl>
+```
+
 git tree (with specific commit)
 
 ``` r

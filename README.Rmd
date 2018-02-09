@@ -77,6 +77,12 @@ Custom CRAN package counter:
 cloc_cran(c("archdata", "hrbrthemes", "iptools", "dplyr"))
 ```
 
+git tree 
+
+```{r message=FALSE, warning=FALSE, error=FALSE}
+cloc_git("~/packages/cloc")
+```
+
 git tree (with specific commit)
 
 ```{r message=FALSE, warning=FALSE, error=FALSE}
