@@ -4,7 +4,7 @@
 \alias{cloc}
 \title{Count lines of code, comments and whitespace in source files/archives}
 \usage{
-cloc(source, extract_with = NULL)
+cloc(source = ".", extract_with = NULL)
 }
 \arguments{
 \item{source}{file, directory or archive to read from (can be a valid URL)}
