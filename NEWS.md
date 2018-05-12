@@ -1,3 +1,13 @@
+# cloc 0.2.0
+
+- included a custom `cloc.pl` script (`cloc` pending PR <https://github.com/AlDanial/cloc/pull/294>)
+  that adds support for R Markdown (Rmd) files. Only the lines of code between
+  the triple-backticks clode blocks are included. THe resultant "language" type is
+  `Rmd` as the code blocks could be anything. The results will only be fully accurate for
+  R/Python-ish syntax languages (i.e. the ones supporting the basic `cloc` rules for 
+  those languages) but they should be accurate enough for rough estimates for
+  other languages used in Rmd code blocks.
+
 # cloc 0.1.0
 
 - added support for many cloc.pl features

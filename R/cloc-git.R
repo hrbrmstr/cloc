@@ -19,7 +19,7 @@ cloc_git <- function(repo_dir, commit=".") {
       )
   }
 
-  repo_dir <-normalizePath(path.expand(repo_dir))
+  repo_dir <- path.expand(repo_dir)
 
   stopifnot(file.exists(repo_dir))
 
