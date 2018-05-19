@@ -54,6 +54,7 @@
 #' @name cloc-package
 #' @docType package
 #' @author Bob Rudis (bob@@rud.is)
+#' @import rstudioapi
 #' @importFrom git2r clone
 #' @importFrom processx run
 #' @importFrom utils read.table contrib.url download.file download.packages tail

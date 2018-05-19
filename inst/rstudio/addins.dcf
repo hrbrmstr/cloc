@@ -1,0 +1,4 @@
+Name: Strip Rmd
+Description: Removes everything but code blocks from the active Rmd file
+Binding: strip_rmd
+Interactive: false

@@ -14,6 +14,7 @@ Description: Counts blank lines, comment lines, and physical lines of source cod
 SystemRequirements: perl
 Copyright: file inst/COPYRIGHTS
 Imports:
+    rstudioapi (>= 0.5),
     git2r,
     utils, 
     dplyr,

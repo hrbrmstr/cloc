@@ -13,3 +13,5 @@ find_perl <- function() {
   return(perl)
 
 }
+
+is_rmd_file <- function(path) { grepl("\\.Rmd$", path, ignore.case = TRUE) }

@@ -10,6 +10,7 @@
 - URLs as sources work in more funtions now
 - cloc_git() can now clone repo when using git:// URLs
 - removed dplyr dependency
+- created an RStudio addin to enable reducing the active Rmd document to just code (in a new document)
 
 # cloc 0.1.0
 
