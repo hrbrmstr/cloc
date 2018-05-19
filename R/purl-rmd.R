@@ -1,5 +1,6 @@
+
 #' @keywords internal
-strip_rmd_addin <- function() {
+purl_rmd_addin <- function() {
 
   ctx <- rstudioapi::getActiveDocumentContext()
 
@@ -17,9 +18,7 @@ strip_rmd_addin <- function() {
 
       cat(ctx$contents, file = tf1, sep = "\n")
 
-      nc <- cloc_remove_comments(tf1)
-
-      cat(nc, file = tf2)
+      knitr::purl(tf1, output = tf2)
 
       navigateToFile(tf2, line = -1L, column = -1L)
 

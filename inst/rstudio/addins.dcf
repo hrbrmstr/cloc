@@ -1,4 +1,14 @@
 Name: Strip Rmd
-Description: Removes everything but code blocks from the active Rmd file
-Binding: strip_rmd
+Description: Removes everything but code blocks from the active Rmd file (uses cloc)
+Binding: strip_rmd_addin
+Interactive: false
+
+Name: purl Rmd
+Description: Removes everything but code blocks from the active Rmd file (uses knitr::purl)
+Binding: purl_rmd_addin
+Interactive: false
+
+Name: cloc Package
+Description: Run cloc on current package and present results
+Binding: cloc_pkg_addin
 Interactive: false

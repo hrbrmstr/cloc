@@ -15,6 +15,10 @@ SystemRequirements: perl
 Copyright: file inst/COPYRIGHTS
 Imports:
     rstudioapi (>= 0.5),
+    rprojroot,
+    DT,
+    knitr,
+    htmltools,
     git2r,
     utils, 
     dplyr,
