@@ -1,14 +1,14 @@
 #' Count lines of code, comments and whitespace in a git tree
 #'
 #' @md
-#' @param repo_dir path to git repo
+#' @param repo path to git repo
 #' @param commit "`.`" for the current source tree or the commit identifier for a specific commit
 #' @return tibble
 #' @export
 #' @examples \dontrun{
 #' cloc_git("~/packages/cloc", "3643cd09d4b951b1b35d32dffe35985dfe7756c4")
 #' }
-cloc_git <- function(repo_dir, commit=".") {
+cloc_git <- function(repo, commit=".") {
 
   perl <- Sys.which("perl")
 
@@ -19,15 +19,15 @@ cloc_git <- function(repo_dir, commit=".") {
       )
   }
 
-  repo_dir <- path.expand(repo_dir)
+  repo <- path.expand(repo)
 
-  stopifnot(file.exists(repo_dir))
+  stopifnot(file.exists(repo))
 
   # make the command line
 
   curr_dir <- getwd()
 
-  setwd(repo_dir)
+  setwd(repo)
   on.exit(setwd(curr_dir), add=TRUE)
 
   x <- processx::run(
@@ -48,7 +48,7 @@ cloc_git <- function(repo_dir, commit=".") {
   if (length(dat) == 0) {
     return(
       data.frame(
-        source = basename(repo_dir),
+        source = basename(repo),
         language = NA_character_,
         file_count = 0,
         file_count_pct = 0,
@@ -71,7 +71,7 @@ cloc_git <- function(repo_dir, commit=".") {
   )
 
   # calculate percentages
-  fil$source <- basename(repo_dir)
+  fil$source <- basename(repo)
   fil$file_count_pct <- fil$file_count / sum(fil$file_count)
   fil$blank_line_pct <- fil$blank_lines / sum(fil$blank_lines)
   fil$comment_line_pct <- fil$comment_lines / sum(fil$comment_lines)

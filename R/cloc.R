@@ -30,9 +30,9 @@ cloc <- function(source = ".", extract_with = NULL) {
       )
   }
 
-  is_url <- R.utils::isUrl(source)
+  tis_url <- is_url(source)
 
-  if (is_url) { # download the source if a URL was specified
+  if (tis_url) { # download the source if a URL was specified
     dir <- tempdir()
     utils::download.file(source, file.path(dir, basename(source)), method = "curl", quiet = TRUE)
     source <- file.path(dir, basename(source))

@@ -19,6 +19,15 @@ cloc_remove_comments <- function(source_file) {
       )
   }
 
+  tis_url <- is_url(source_file)
+
+  if (tis_url) { # download the source_file if a URL was specified
+    dir <- tempdir()
+    utils::download.file(source_file, file.path(dir, basename(source_file)), method = "curl", quiet = TRUE)
+    source_file <- file.path(dir, basename(source_file))
+    on.exit(unlink(source_file), add = TRUE)
+  }
+
   source_file <- path.expand(source_file)
 
   stopifnot(file.exists(source_file))

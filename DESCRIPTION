@@ -1,13 +1,12 @@
 Package: cloc
 Title: Count Lines of Code, Comments and Whitespace in Source Files and Archives
-Version: 0.2.0
+Version: 0.1.0
 Authors@R: c(
     person("Bob", "Rudis", email = "bob@rud.is", role = c("aut", "cre"), 
            comment = c(ORCID = "0000-0001-5670-2640")),
     person("Al", "Danial", comment = "cloc perl script", role=c("aut")),
     person("Maëlle", "Salmon", email = "maelle.salmon@yahoo.se", role = c("ctb")), 
-    person("Chris", "Muir", email = "chrismuirrva@gmail.com", role = c("ctb")),
-    person("Mark", "Padgham", email = "mark.padgham@email.com", role = c("ctb"))
+    person("Chris", "Muir", email = "chrismuirrva@gmail.com", role = c("ctb"))
   )
 Description: Counts blank lines, comment lines, and physical lines of source code 
     in source files/trees/archives. An R wrapper to the 'Perl' command-line utility 
@@ -15,7 +14,6 @@ Description: Counts blank lines, comment lines, and physical lines of source cod
 SystemRequirements: perl
 Copyright: file inst/COPYRIGHTS
 Imports:
-    R.utils,
     utils, 
     dplyr,
     processx
