@@ -48,14 +48,7 @@
 #' cloc_version()
 cloc_call <- function(args = character(), echo = TRUE, ...) {
 
-  perl <- Sys.which("perl")
-
-  if (perl == "") {
-    stop(
-      "Cannot find 'perl'. cloc requires perl to be installed and on the PATH.",
-       call. = FALSE
-      )
-  }
+  perl <- find_perl()
 
   args <-  c(system.file("bin/cloc.pl", package = "cloc"), args)
 

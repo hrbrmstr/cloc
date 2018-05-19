@@ -16,21 +16,14 @@
 #' str(cloc_by_file(system.file("extdata", "App.java", package="cloc")))
 cloc_by_file <- function(source, extract_with=NULL) {
 
-  perl <- Sys.which("perl")
-
-  if (perl == "") {
-    stop(
-      "Cannot find 'perl'. cloc requires perl to be installed and on the PATH.",
-       call. = FALSE
-      )
-  }
+  perl <- find_perl()
 
   tis_url <- is_url(source)
 
   if (tis_url) { # download the source if a URL was specified
-    dir <- tempdir()
-    utils::download.file(source, file.path(dir, basename(source)), method = "curl", quiet = TRUE)
-    source <- file.path(dir, basename(source))
+    tdir <- tempdir()
+    utils::download.file(source, file.path(tdir, basename(source)), method = "curl", quiet = TRUE)
+    source <- file.path(tdir, basename(source))
     on.exit(unlink(source), add = TRUE)
   }
 

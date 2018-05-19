@@ -7,6 +7,8 @@
   R/Python-ish syntax languages (i.e. the ones supporting the basic `cloc` rules for 
   those languages) but they should be accurate enough for rough estimates for
   other languages used in Rmd code blocks.
+- URLs as sources work in more funtions now
+- cloc_git() can now clone repo when using git:// URLs
 
 # cloc 0.1.0
 

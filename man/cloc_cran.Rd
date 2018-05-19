@@ -23,7 +23,7 @@ argument repos.}
 \item{.progress}{show a progress bar? Default: \code{TRUE} if running interactively.}
 }
 \value{
-tibble
+data frame (tibble)
 }
 \description{
 Count lines of code (etc) from source packages on CRAN

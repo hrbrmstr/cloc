@@ -89,6 +89,12 @@ git tree (with specific commit)
 cloc_git("~/packages/cloc", "3643cd09d4b951b1b35d32dffe35985dfe7756c4")
 ```
 
+remote git tree
+
+```{r message=FALSE, warning=FALSE, error=FALSE}
+cloc_git("git://github.com/maelle/convertagd.git")
+```
+
 Detailed results by file
 
 ```{r message=FALSE, warning=FALSE, error=FALSE}
@@ -109,7 +115,7 @@ Strip comments and whitespace from individual source files
 
 ```{r message=FALSE, warning=FALSE, error=FALSE}
 cat(
-  cloc_remove_comments(system.file("extdata", "qrencoder.cpp", package="cloc"))
+  cloc_remove_comments("https://raw.githubusercontent.com/maelle/convertagd/master/README.Rmd")
 )
 ```
 

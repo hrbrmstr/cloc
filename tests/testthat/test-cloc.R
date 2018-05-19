@@ -1,4 +1,15 @@
-context("cloc works")
+context("cloc works (get it?")
+test_that("core bits are functioning as expected", {
+
+  langs <- cloc_reognized_languages()
+  expect_equal(langs$lang[4], "ADSO/IDSM")
+  expect_equal(cloc_version(), "1.77")
+  expect_is(cloc_os(), "character")
+
+
+})
+
+context("cloc counts things properly")
 test_that("core bits are functioning as expected", {
 
   res <- cloc(system.file("extdata", "App.java", package="cloc"))
@@ -8,10 +19,6 @@ test_that("core bits are functioning as expected", {
   expect_equal(res$blank_lines[1], 1)
   expect_equal(res$comment_lines[1], 4)
 
-  langs <- cloc_reognized_languages()
-
-  expect_equal(langs$lang[4], "ADSO/IDSM")
-
   nc <- cloc_remove_comments(system.file("extdata", "qrencoder.cpp", package="cloc"))
 
   expect_equal(nchar(nc), 4830)
@@ -20,14 +27,28 @@ test_that("core bits are functioning as expected", {
 
   expect_equal(bf$loc, 142)
 
-  expect_equal(cloc_version(), "1.74")
+})
 
-  expect_is(cloc_os(), "character")
+context("CRAN")
+test_that("retrieving things from CRAN works", {
 
+  skip_on_appveyor()
+  skip_on_travis()
   skip_on_cran()
 
   cran <- cloc_cran("dplyr", "https://cran.rstudio.com", .progress=FALSE)
-
   expect_equal(cran$language[1], "R")
+
+})
+
+context("git remote works")
+test_that("retrieving things from remote git works", {
+
+  skip_on_appveyor()
+  skip_on_travis()
+  skip_on_cran()
+
+  git <- cloc_git("git://github.com/hrbrmstr/cloc.git")
+  expect_true("R" %in% git$language)
 
 })

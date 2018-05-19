@@ -51,7 +51,7 @@ library(cloc)
 
 # current verison
 packageVersion("cloc")
-#> [1] '0.1.0'
+#> [1] '0.2.0'
 ```
 
 Basic usage
@@ -60,35 +60,35 @@ Basic usage
 # by dir
 cloc(system.file("extdata", package="cloc"))
 #> # A tibble: 3 x 10
-#>    source language file_count file_count_pct   loc    loc_pct blank_lines blank_line_pct comment_lines comment_line_pct
-#>     <chr>    <chr>      <int>          <dbl> <int>      <dbl>       <int>          <dbl>         <int>            <dbl>
-#> 1 extdata      C++          1      0.3333333   142 0.49305556          41     0.62121212            63       0.45652174
-#> 2 extdata        R          1      0.3333333   138 0.47916667          24     0.36363636            71       0.51449275
-#> 3 extdata     Java          1      0.3333333     8 0.02777778           1     0.01515152             4       0.02898551
+#>   source  language file_count file_count_pct   loc loc_pct blank_lines blank_line_pct comment_lines comment_line_pct
+#>   <chr>   <chr>         <int>          <dbl> <int>   <dbl>       <int>          <dbl>         <int>            <dbl>
+#> 1 extdata C++               1          0.333   142  0.493           41         0.621             63           0.457 
+#> 2 extdata R                 1          0.333   138  0.479           24         0.364             71           0.514 
+#> 3 extdata Java              1          0.333     8  0.0278           1         0.0152             4           0.0290
 
 # by file
 cloc(system.file("extdata", "App.java", package="cloc"))
 #> # A tibble: 1 x 10
-#>     source language file_count file_count_pct   loc loc_pct blank_lines blank_line_pct comment_lines comment_line_pct
-#>      <chr>    <chr>      <int>          <dbl> <int>   <dbl>       <int>          <dbl>         <int>            <dbl>
-#> 1 App.java     Java          1              1     8       1           1              1             4                1
+#>   source   language file_count file_count_pct   loc loc_pct blank_lines blank_line_pct comment_lines comment_line_pct
+#>   <chr>    <chr>         <int>          <dbl> <int>   <dbl>       <int>          <dbl>         <int>            <dbl>
+#> 1 App.java Java              1             1.     8      1.           1             1.             4               1.
 
 # from a url
 cloc("https://rud.is/dl/cloc-1.74.tar.gz")
 #> # A tibble: 93 x 10
-#>              source      language file_count file_count_pct   loc    loc_pct blank_lines blank_line_pct comment_lines
-#>               <chr>         <chr>      <int>          <dbl> <int>      <dbl>       <int>          <dbl>         <int>
-#>  1 cloc-1.74.tar.gz          Perl          5    0.017985612 19712 0.59784059        1353   0.4203168686          2430
-#>  2 cloc-1.74.tar.gz          YAML        141    0.507194245  2887 0.08755914           1   0.0003106555           141
-#>  3 cloc-1.74.tar.gz      Markdown          1    0.003597122  2195 0.06657164         226   0.0702081392            26
-#>  4 cloc-1.74.tar.gz ANTLR Grammar          2    0.007194245  1012 0.03069271         200   0.0621310966            59
-#>  5 cloc-1.74.tar.gz             R          3    0.010791367   698 0.02116948          95   0.0295122709           312
-#>  6 cloc-1.74.tar.gz  C/C++ Header          1    0.003597122   617 0.01871285         191   0.0593351973           780
-#>  7 cloc-1.74.tar.gz           C++          4    0.014388489   570 0.01728740         132   0.0410065238           173
-#>  8 cloc-1.74.tar.gz         Forth          2    0.007194245   529 0.01604392          17   0.0052811432            84
-#>  9 cloc-1.74.tar.gz    TypeScript          3    0.010791367   410 0.01243479          52   0.0161540851            39
-#> 10 cloc-1.74.tar.gz       Logtalk          1    0.003597122   368 0.01116099          59   0.0183286735            57
-#> # ... with 83 more rows, and 1 more variables: comment_line_pct <dbl>
+#>    source   language  file_count file_count_pct   loc loc_pct blank_lines blank_line_pct comment_lines comment_line_pct
+#>    <chr>    <chr>          <int>          <dbl> <int>   <dbl>       <int>          <dbl>         <int>            <dbl>
+#>  1 cloc-1.… Perl               5        0.0180  19712  0.598         1353       0.420             2430          0.443  
+#>  2 cloc-1.… YAML             141        0.507    2887  0.0876           1       0.000311           141          0.0257 
+#>  3 cloc-1.… Markdown           1        0.00360  2195  0.0666         226       0.0702              26          0.00474
+#>  4 cloc-1.… ANTLR Gr…          2        0.00719  1012  0.0307         200       0.0621              59          0.0108 
+#>  5 cloc-1.… R                  3        0.0108    698  0.0212          95       0.0295             312          0.0569 
+#>  6 cloc-1.… C/C++ He…          1        0.00360   617  0.0187         191       0.0593             780          0.142  
+#>  7 cloc-1.… C++                4        0.0144    570  0.0173         132       0.0410             173          0.0315 
+#>  8 cloc-1.… Forth              2        0.00719   529  0.0160          17       0.00528             84          0.0153 
+#>  9 cloc-1.… TypeScri…          3        0.0108    410  0.0124          52       0.0162              39          0.00711
+#> 10 cloc-1.… Logtalk            1        0.00360   368  0.0112          59       0.0183              57          0.0104 
+#> # ... with 83 more rows
 ```
 
 Custom CRAN package counter:
@@ -96,68 +96,91 @@ Custom CRAN package counter:
 ``` r
 cloc_cran(c("archdata", "hrbrthemes", "iptools", "dplyr"))
 #>                     source     language file_count file_count_pct   loc     loc_pct blank_lines blank_line_pct
-#> 1      archdata_1.1.tar.gz         <NA>          0    0.000000000     0 0.000000000           0    0.000000000
-#> 2  hrbrthemes_0.1.0.tar.gz            R          9    0.750000000   360 0.592105263          80    0.544217687
-#> 3  hrbrthemes_0.1.0.tar.gz     Markdown          2    0.166666667   140 0.230263158          39    0.265306122
-#> 4  hrbrthemes_0.1.0.tar.gz         HTML          1    0.083333333   108 0.177631579          28    0.190476190
-#> 5     iptools_0.4.0.tar.gz   JavaScript          2    0.080000000  7952 0.868691282         699    0.716188525
-#> 6     iptools_0.4.0.tar.gz          C++          3    0.120000000   600 0.065545117         109    0.111680328
-#> 7     iptools_0.4.0.tar.gz            R         17    0.680000000   341 0.037251475          92    0.094262295
-#> 8     iptools_0.4.0.tar.gz         HTML          2    0.080000000   220 0.024033210          51    0.052254098
-#> 9     iptools_0.4.0.tar.gz C/C++ Header          1    0.040000000    41 0.004478916          25    0.025614754
-#> 10      dplyr_0.7.4.tar.gz            R        147    0.462264151 12303 0.436245656        2655    0.427398583
-#> 11      dplyr_0.7.4.tar.gz C/C++ Header        125    0.393081761  6816 0.241684987        1826    0.293947199
-#> 12      dplyr_0.7.4.tar.gz          C++         32    0.100628931  4335 0.153712503         795    0.127978107
-#> 13      dplyr_0.7.4.tar.gz         HTML         11    0.034591195  3564 0.126374016         367    0.059079202
-#> 14      dplyr_0.7.4.tar.gz     Markdown          2    0.006289308  1154 0.040919084         562    0.090470058
-#> 15      dplyr_0.7.4.tar.gz            C          1    0.003144654    30 0.001063754           7    0.001126851
+#> 1      archdata_1.2.tar.gz         <NA>          0    0.000000000     0 0.000000000           0   0.0000000000
+#> 2  hrbrthemes_0.5.0.tar.gz            R         20    0.689655172   927 0.627198917         183   0.5228571429
+#> 3  hrbrthemes_0.5.0.tar.gz         HTML          2    0.068965517   366 0.247631935          48   0.1371428571
+#> 4  hrbrthemes_0.5.0.tar.gz          CSS          1    0.034482759   113 0.076454668          27   0.0771428571
+#> 5  hrbrthemes_0.5.0.tar.gz          Rmd          3    0.103448276    35 0.023680650          78   0.2228571429
+#> 6  hrbrthemes_0.5.0.tar.gz     Markdown          1    0.034482759    29 0.019621110          14   0.0400000000
+#> 7  hrbrthemes_0.5.0.tar.gz         YAML          2    0.068965517     8 0.005412720           0   0.0000000000
+#> 8     iptools_0.4.0.tar.gz   JavaScript          2    0.074074074  7952 0.864159965         699   0.6927651140
+#> 9     iptools_0.4.0.tar.gz          C++          3    0.111111111   600 0.065203217         109   0.1080277502
+#> 10    iptools_0.4.0.tar.gz            R         17    0.629629630   341 0.037057161          92   0.0911793855
+#> 11    iptools_0.4.0.tar.gz         HTML          2    0.074074074   220 0.023907846          51   0.0505450942
+#> 12    iptools_0.4.0.tar.gz          Rmd          2    0.074074074    48 0.005216257          33   0.0327056492
+#> 13    iptools_0.4.0.tar.gz C/C++ Header          1    0.037037037    41 0.004455553          25   0.0247770069
+#> 14      dplyr_0.7.5.tar.gz            R        148    0.453987730 13216 0.441548896        2671   0.3795651556
+#> 15      dplyr_0.7.5.tar.gz C/C++ Header        125    0.383435583  6687 0.223413852        1836   0.2609066364
+#> 16      dplyr_0.7.5.tar.gz          C++         33    0.101226994  4724 0.157829675         915   0.1300270001
+#> 17      dplyr_0.7.5.tar.gz         HTML         11    0.033742331  3602 0.120343457         367   0.0521529061
+#> 18      dplyr_0.7.5.tar.gz     Markdown          2    0.006134969  1251 0.041796131         619   0.0879636209
+#> 19      dplyr_0.7.5.tar.gz          Rmd          6    0.018404908   421 0.014065684         622   0.0883899389
+#> 20      dplyr_0.7.5.tar.gz            C          1    0.003067485    30 0.001002305           7   0.0009947421
 #>    comment_lines comment_line_pct        pkg
 #> 1              0      0.000000000   archdata
-#> 2            239      0.995833333 hrbrthemes
-#> 3              0      0.000000000 hrbrthemes
-#> 4              1      0.004166667 hrbrthemes
-#> 5            356      0.262924668    iptools
-#> 6            260      0.192023634    iptools
-#> 7            531      0.392171344    iptools
-#> 8              2      0.001477105    iptools
-#> 9            205      0.151403250    iptools
-#> 10          3836      0.873406193      dplyr
-#> 11           251      0.057149362      dplyr
-#> 12           294      0.066939891      dplyr
-#> 13            11      0.002504554      dplyr
-#> 14             0      0.000000000      dplyr
-#> 15             0      0.000000000      dplyr
+#> 2            549      0.823088456 hrbrthemes
+#> 3              2      0.002998501 hrbrthemes
+#> 4              0      0.000000000 hrbrthemes
+#> 5            116      0.173913043 hrbrthemes
+#> 6              0      0.000000000 hrbrthemes
+#> 7              0      0.000000000 hrbrthemes
+#> 8            356      0.249649369    iptools
+#> 9            260      0.182328191    iptools
+#> 10           531      0.372370266    iptools
+#> 11             2      0.001402525    iptools
+#> 12            72      0.050490884    iptools
+#> 13           205      0.143758766    iptools
+#> 14          3876      0.672916667      dplyr
+#> 15           267      0.046354167      dplyr
+#> 16           336      0.058333333      dplyr
+#> 17            11      0.001909722      dplyr
+#> 18             0      0.000000000      dplyr
+#> 19          1270      0.220486111      dplyr
+#> 20             0      0.000000000      dplyr
 ```
 
 git tree
 
 ``` r
 cloc_git("~/packages/cloc")
-#> # A tibble: 7 x 10
-#>   source language file_count file_count_pct   loc      loc_pct blank_lines blank_line_pct comment_lines
-#>    <chr>    <chr>      <int>          <dbl> <int>        <dbl>       <int>          <dbl>         <int>
-#> 1   cloc     Perl          1     0.04545455 10059 0.9119673617         787   0.7823061630          1292
-#> 2   cloc        R         11     0.50000000   433 0.0392565730         122   0.1212723658           310
-#> 3   cloc Markdown          3     0.13636364   351 0.0318223028          41   0.0407554672             0
-#> 4   cloc      C++          1     0.04545455   142 0.0128739801          41   0.0407554672            63
-#> 5   cloc     YAML          3     0.13636364    35 0.0031731641          14   0.0139165010             3
-#> 6   cloc     Java          1     0.04545455     8 0.0007252947           1   0.0009940358             4
-#> 7   cloc     JSON          2     0.09090909     2 0.0001813237           0   0.0000000000             0
-#> # ... with 1 more variables: comment_line_pct <dbl>
+#> # A tibble: 8 x 10
+#>   source language file_count file_count_pct   loc  loc_pct blank_lines blank_line_pct comment_lines comment_line_pct
+#>   <chr>  <chr>         <int>          <dbl> <int>    <dbl>       <int>          <dbl>         <int>            <dbl>
+#> 1 cloc   Perl              1         0.0417 10578 0.910            838       0.755             1339          0.747  
+#> 2 cloc   R                12         0.500    456 0.0392           135       0.122              316          0.176  
+#> 3 cloc   Markdown          3         0.125    385 0.0331            45       0.0405               0          0.     
+#> 4 cloc   C++               1         0.0417   142 0.0122            41       0.0369              63          0.0352 
+#> 5 cloc   YAML              3         0.125     35 0.00301           14       0.0126               3          0.00167
+#> 6 cloc   Rmd               1         0.0417    22 0.00189           36       0.0324              67          0.0374 
+#> 7 cloc   Java              1         0.0417     8 0.000688           1       0.000901             4          0.00223
+#> 8 cloc   JSON              2         0.0833     2 0.000172           0       0.                   0          0.
 ```
 
 git tree (with specific commit)
 
 ``` r
 cloc_git("~/packages/cloc", "3643cd09d4b951b1b35d32dffe35985dfe7756c4")
+#> # A tibble: 5 x 10
+#>   source language file_count file_count_pct   loc  loc_pct blank_lines blank_line_pct comment_lines comment_line_pct
+#>   <chr>  <chr>         <int>          <dbl> <int>    <dbl>       <int>          <dbl>         <int>            <dbl>
+#> 1 cloc   Perl              1          0.111 10059 0.987            787        0.911            1292         0.957   
+#> 2 cloc   Markdown          2          0.222    60 0.00589           31        0.0359              0         0.      
+#> 3 cloc   R                 4          0.444    52 0.00510           22        0.0255             25         0.0185  
+#> 4 cloc   Rmd               1          0.111    13 0.00128           21        0.0243             32         0.0237  
+#> 5 cloc   YAML              1          0.111    10 0.000981           3        0.00347             1         0.000741
+```
+
+remote git tree
+
+``` r
+cloc_git("git://github.com/maelle/convertagd.git")
 #> # A tibble: 4 x 10
-#>   source language file_count file_count_pct   loc      loc_pct blank_lines blank_line_pct comment_lines
-#>    <chr>    <chr>      <int>          <dbl> <int>        <dbl>       <int>          <dbl>         <int>
-#> 1   cloc     Perl          1          0.125 10059 0.9880168942         787    0.933570581          1292
-#> 2   cloc Markdown          2          0.250    60 0.0058933307          31    0.036773428             0
-#> 3   cloc        R          4          0.500    52 0.0051075533          22    0.026097272            25
-#> 4   cloc     YAML          1          0.125    10 0.0009822218           3    0.003558719             1
-#> # ... with 1 more variables: comment_line_pct <dbl>
+#>   source     language file_count file_count_pct   loc loc_pct blank_lines blank_line_pct comment_lines comment_line_pct
+#>   <chr>      <chr>         <int>          <dbl> <int>   <dbl>       <int>          <dbl>         <int>            <dbl>
+#> 1 convertag… R                 7         0.583    249  0.659           70          0.560            68           0.667 
+#> 2 convertag… Markdown          2         0.167     77  0.204           23          0.184             0           0.    
+#> 3 convertag… YAML              2         0.167     42  0.111           16          0.128             4           0.0392
+#> 4 convertag… Rmd               1         0.0833    10  0.0265          16          0.128            30           0.294
 ```
 
 Detailed results by file
@@ -167,7 +190,7 @@ Detailed results by file
 str(cloc_by_file(system.file("extdata", package="cloc")))
 #> Classes 'tbl_df', 'tbl' and 'data.frame':    3 obs. of  6 variables:
 #>  $ source       : chr  "extdata" "extdata" "extdata"
-#>  $ filename     : chr  "/Library/Frameworks/R.framework/Versions/3.4/Resources/library/cloc/extdata/qrencoder.cpp" "/Library/Frameworks/R.framework/Versions/3.4/Resources/library/cloc/extdata/dbi.r" "/Library/Frameworks/R.framework/Versions/3.4/Resources/library/cloc/extdata/App.java"
+#>  $ filename     : chr  "/Library/Frameworks/R.framework/Versions/3.5/Resources/library/cloc/extdata/qrencoder.cpp" "/Library/Frameworks/R.framework/Versions/3.5/Resources/library/cloc/extdata/dbi.r" "/Library/Frameworks/R.framework/Versions/3.5/Resources/library/cloc/extdata/App.java"
 #>  $ language     : chr  "C++" "R" "Java"
 #>  $ loc          : int  142 138 8
 #>  $ blank_lines  : int  41 24 1
@@ -177,7 +200,7 @@ str(cloc_by_file(system.file("extdata", package="cloc")))
 str(cloc_by_file(system.file("extdata", "App.java", package="cloc")))
 #> Classes 'tbl_df', 'tbl' and 'data.frame':    1 obs. of  6 variables:
 #>  $ source       : chr "App.java"
-#>  $ filename     : chr "/Library/Frameworks/R.framework/Versions/3.4/Resources/library/cloc/extdata/App.java"
+#>  $ filename     : chr "/Library/Frameworks/R.framework/Versions/3.5/Resources/library/cloc/extdata/App.java"
 #>  $ language     : chr "Java"
 #>  $ loc          : int 8
 #>  $ blank_lines  : int 1
@@ -188,170 +211,38 @@ Recognized languages
 
 ``` r
 cloc_reognized_languages()
-#> # A tibble: 217 x 2
-#>              lang             extensions
-#>             <chr>                  <chr>
-#>  1           ABAP                   abap
-#>  2   ActionScript                     as
-#>  3            Ada     ada, adb, ads, pad
-#>  4      ADSO/IDSM                   adso
-#>  5          AMPLE ample, dofile, startup
-#>  6            Ant   build.xml, build.xml
-#>  7  ANTLR Grammar                  g, g4
-#>  8   Apex Trigger                trigger
-#>  9 Arduino Sketch               ino, pde
-#> 10            ASP               asa, asp
-#> # ... with 207 more rows
+#> # A tibble: 238 x 2
+#>    lang           extensions            
+#>    <chr>          <chr>                 
+#>  1 ABAP           abap                  
+#>  2 ActionScript   as                    
+#>  3 Ada            ada, adb, ads, pad    
+#>  4 ADSO/IDSM      adso                  
+#>  5 Agda           agda, lagda           
+#>  6 AMPLE          ample, dofile, startup
+#>  7 Ant            build.xml, build.xml  
+#>  8 ANTLR Grammar  g, g4                 
+#>  9 Apex Trigger   trigger               
+#> 10 Arduino Sketch ino, pde              
+#> # ... with 228 more rows
 ```
 
 Strip comments and whitespace from individual source files
 
 ``` r
 cat(
-  cloc_remove_comments(system.file("extdata", "qrencoder.cpp", package="cloc"))
+  cloc_remove_comments("https://raw.githubusercontent.com/maelle/convertagd/master/README.Rmd")
 )
-#> #include <Rcpp.h>
-#> #include "qrencode.h"
-#> #include <stdio.h>
-#> #include <unistd.h>
-#> #include <string>
-#> #include <fstream>
-#> #include <streambuf>
-#> using namespace Rcpp;
-#> #define INCHES_PER_METER (100.0/2.54)
-#> static int rle = 1;
-#> static unsigned int fg_color[4] = {0, 0, 0, 255};
-#> static unsigned int bg_color[4] = {255, 255, 255, 255};
-#> NumericMatrix qrencode_raw(std::string to_encode,
-#>                            int version=0,
-#>                            int level=0,
-#>                            int hint=2,
-#>                            int caseinsensitive=1) {
-#>   QRcode *qrcode ;
-#>   unsigned char *row;
-#>   int x, y;
-#>   qrcode = QRcode_encodeString(to_encode.c_str(),
-#>                                version,
-#>                                (QRecLevel)level,
-#>                                (QRencodeMode)hint, caseinsensitive);
-#>   NumericMatrix qr(qrcode->width, qrcode->width);
-#>   for(y=0; y <qrcode->width; y++) {
-#>     row = qrcode->data+(y*qrcode->width);
-#>     for(x = 0; x < qrcode->width; x++) {
-#>       qr(x, y) = row[x]&0x1;
-#>     }
-#>   }
-#>   return(qr);
-#> }
-#> static FILE *openFile(const char *outfile) {
-#>   FILE *fp;
-#>   if(outfile == NULL || (outfile[0] == '-' && outfile[1] == '\0')) {
-#>     fp = stdout;
-#>   } else {
-#>     fp = fopen(outfile, "wb");
-#>     if (fp == NULL) return(NULL);
-#>   }
-#>   return fp;
-#> }
-#> static void writeSVG_writeRect(FILE *fp, int x, int y, int width, char* col, float opacity) {
-#>   if(fg_color[3] != 255) {
-#>     fprintf(fp, "\t\t\t<rect x=\"%d\" y=\"%d\" width=\"%d\" height=\"1\" "\
-#>               "fill=\"#%s\" fill-opacity=\"%f\" />\n",
-#>               x, y, width, col, opacity );
-#>   } else {
-#>     fprintf(fp, "\t\t\t<rect x=\"%d\" y=\"%d\" width=\"%d\" height=\"1\" "\
-#>               "fill=\"#%s\" />\n",
-#>               x, y, width, col );
-#>   }
-#> }
-#> CharacterVector writeSVG(QRcode *qrcode, int margin, int size, int dpi) {
-#>   FILE *fp;
-#>   unsigned char *row, *p;
-#>   int x, y, x0, pen;
-#>   int symwidth, realwidth;
-#>   float scale;
-#>   char fg[7], bg[7];
-#>   float fg_opacity;
-#>   float bg_opacity;
-#>   char fname[L_tmpnam];
-#>   memset(fname, 0, L_tmpnam);
-#>   strncpy(fname,"qrencoder-XXXXXX", 16);
-#>   fp = openFile(mktemp(fname));
-#>   if (fp == NULL) return(R_NilValue);
-#>   scale = dpi * INCHES_PER_METER / 100.0;
-#>   symwidth = qrcode->width + margin * 2;
-#>   realwidth = symwidth * size;
-#>   snprintf(fg, 7, "%02x%02x%02x", fg_color[0], fg_color[1],  fg_color[2]);
-#>   snprintf(bg, 7, "%02x%02x%02x", bg_color[0], bg_color[1],  bg_color[2]);
-#>   fg_opacity = (float)fg_color[3] / 255;
-#>   bg_opacity = (float)bg_color[3] / 255;
-#>   fputs( "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\n", fp );
-#>   fprintf( fp, "<!-- Created with qrencode %s (http:
-#>            QRcode_APIVersionString() );
-#>   fprintf( fp, "<svg width=\"%0.2fcm\" height=\"%0.2fcm\" viewBox=\"0 0 %d %d\""\
-#>              " preserveAspectRatio=\"none\" version=\"1.1\""                    \
-#>              " xmlns=\"http:
-#>              realwidth / scale, realwidth / scale, symwidth, symwidth
-#>   );
-#>   fputs( "\t<g id=\"QRcode\">\n", fp );
-#>   if(bg_color[3] != 255) {
-#>     fprintf(fp, "\t\t<rect x=\"0\" y=\"0\" width=\"%d\" height=\"%d\" fill=\"#%s\" fill-opacity=\"%f\" />\n", symwidth, symwidth, bg, bg_opacity);
-#>   } else {
-#>     fprintf(fp, "\t\t<rect x=\"0\" y=\"0\" width=\"%d\" height=\"%d\" fill=\"#%s\" />\n", symwidth, symwidth, bg);
-#>   }
-#>   fputs( "\t\t<g id=\"Pattern\">\n", fp);
-#>   p = qrcode->data;
-#>   for(y=0; y<qrcode->width; y++) {
-#>     row = (p+(y*qrcode->width));
-#>     if( !rle ) {
-#>       for(x=0; x<qrcode->width; x++) {
-#>         if(*(row+x)&0x1) {
-#>           writeSVG_writeRect(fp, margin + x,
-#>                              margin + y, 1,
-#>                              fg, fg_opacity);
-#>         }
-#>       }
-#>     } else {
-#>       pen = 0;
-#>       x0  = 0;
-#>       for(x=0; x<qrcode->width; x++) {
-#>         if( !pen ) {
-#>           pen = *(row+x)&0x1;
-#>           x0 = x;
-#>         } else {
-#>           if(!(*(row+x)&0x1)) {
-#>             writeSVG_writeRect(fp, x0 + margin, y + margin, x-x0, fg, fg_opacity);
-#>             pen = 0;
-#>           }
-#>         }
-#>       }
-#>       if( pen ) {
-#>         writeSVG_writeRect(fp, x0 + margin, y + margin, qrcode->width - x0, fg, fg_opacity);
-#>       }
-#>     }
-#>   }
-#>   fputs( "\t\t</g>\n", fp );
-#>   fputs( "\t</g>\n", fp );
-#>   fputs( "</svg>\n", fp );
-#>   fclose( fp );
-#>   std::ifstream t(fname);
-#>   std::string str((std::istreambuf_iterator<char>(t)),
-#>                   std::istreambuf_iterator<char>());
-#>   t.close();
-#>   unlink(fname);
-#>   return(Rcpp::wrap(str));
-#> }
-#> CharacterVector qrencode_svg(
-#>     std::string to_encode,
-#>     int version=0, int level=0, int hint=2,
-#>     int caseinsensitive=1, int margin = 0, int size = 3, int dpi = 72) {
-#>   QRcode *qrcode ;
-#>   qrcode = QRcode_encodeString(to_encode.c_str(),
-#>                                version,
-#>                                (QRecLevel)level,
-#>                                (QRencodeMode)hint, caseinsensitive);
-#>   return(writeSVG(qrcode, margin, size, dpi));
-#> }
+#> library("knitr")
+#> library("devtools")
+#> install_github("masalmon/convertagd")
+#> library("convertagd")
+#> file <- system.file("extdata", "dummyCHAI.agd", package = "convertagd")
+#> testRes <- read_agd(file, tz = "GMT")
+#> kable(testRes[["settings"]])
+#> kable(head(testRes[["raw.data"]]))
+#> path_to_directory <- system.file("extdata", package = "convertagd")
+#> batch_read_agd(path_to_directory, tz="GMT")
 ```
 
 ## Code of Conduct

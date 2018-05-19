@@ -6,25 +6,19 @@
 #' @md
 #' @param source_file path to source file
 #' @export
+#' @return character vector containing only code blocks
 #' @examples
 #' cloc_remove_comments(system.file("extdata", "qrencoder.cpp", package="cloc"))
 cloc_remove_comments <- function(source_file) {
 
-  perl <- Sys.which("perl")
-
-  if (perl == "") {
-    stop(
-      "Cannot find 'perl'. cloc requires perl to be installed and on the PATH.",
-       call. = FALSE
-      )
-  }
+  perl <- find_perl()
 
   tis_url <- is_url(source_file)
 
   if (tis_url) { # download the source_file if a URL was specified
-    dir <- tempdir()
-    utils::download.file(source_file, file.path(dir, basename(source_file)), method = "curl", quiet = TRUE)
-    source_file <- file.path(dir, basename(source_file))
+    tdir <- tempdir()
+    utils::download.file(source_file, file.path(tdir, basename(source_file)), method = "curl", quiet = TRUE)
+    source_file <- file.path(tdir, basename(source_file))
     on.exit(unlink(source_file), add = TRUE)
   }
 
@@ -49,7 +43,13 @@ cloc_remove_comments <- function(source_file) {
 
   dat <- system(cmd, intern = TRUE)
 
-  lines <- paste0(readLines(sprintf("%s.nc", basename(source_file))), collapse="\n")
+  paste0(
+    readLines(
+      sprintf("%s.nc", basename(source_file)),
+      warn = FALSE
+    ),
+    collapse = "\n"
+  ) -> lines
 
   unlink(sprintf("%s.nc", basename(source_file))) # clean up
 

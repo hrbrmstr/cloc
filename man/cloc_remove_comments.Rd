@@ -9,6 +9,9 @@ cloc_remove_comments(source_file)
 \arguments{
 \item{source_file}{path to source file}
 }
+\value{
+character vector containing only code blocks
+}
 \description{
 Pass in a path to a source file and retrieve a version of the source file
 without comments (or white space).

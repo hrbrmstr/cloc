@@ -1,22 +1,40 @@
 #' Count lines of code, comments and whitespace in a git tree
 #'
 #' @md
-#' @param repo path to git repo
+#' @param repo path to git repo; if `repo` is a URL like `git://`, it will be fetched into
+#'        a temporary directory
 #' @param commit "`.`" for the current source tree or the commit identifier for a specific commit
-#' @return tibble
+#' @param branch,credentials,progressed passed on to [git2r::clone()].
+#' @return data frame (tibble)
 #' @export
 #' @examples \dontrun{
 #' cloc_git("~/packages/cloc", "3643cd09d4b951b1b35d32dffe35985dfe7756c4")
+#'
+#' # from remote git
+#' cloc_git("git://github.com/hrbrmstr/cloc.git")
 #' }
-cloc_git <- function(repo, commit=".") {
+cloc_git <- function(repo, commit=".", branch = NULL, credentials = NULL, progress = FALSE) {
 
-  perl <- Sys.which("perl")
+  perl <- find_perl()
 
-  if (perl == "") {
-    stop(
-      "Cannot find 'perl'. cloc requires perl to be installed and on the PATH.",
-       call. = FALSE
-      )
+  tis_url <- is_url(repo)
+
+  if (tis_url) { # clone the repo if a URL was specified
+
+    tdir <- tempdir()
+
+    git2r::clone(
+      url = repo,
+      local_path = file.path(tdir, basename(repo)),
+      branch = branch,
+      credentials = credentials,
+      progress = progress
+    ) -> repo_obj
+
+    repo <- file.path(tdir, basename(repo))
+
+    on.exit(unlink(repo), add = TRUE)
+
   }
 
   repo <- path.expand(repo)

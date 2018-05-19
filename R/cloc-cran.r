@@ -10,7 +10,7 @@
 #'        because you burned only the ‘contrib’ section on a CD. Overrides
 #'        argument repos.
 #' @param .progress show a progress bar? Default: `TRUE` if running interactively.
-#' @return tibble
+#' @return data frame (tibble)
 #' @export
 #' @examples
 #' # requires a network connection therefore is set for you to run it manually

@@ -4,15 +4,19 @@
 \alias{cloc_git}
 \title{Count lines of code, comments and whitespace in a git tree}
 \usage{
-cloc_git(repo_dir, commit = ".")
+cloc_git(repo, commit = ".", branch = NULL, credentials = NULL,
+  progress = FALSE)
 }
 \arguments{
-\item{repo_dir}{path to git repo}
+\item{repo}{path to git repo; if \code{repo} is a URL like \code{git://}, it will be fetched into
+a temporary directory}
 
 \item{commit}{"\code{.}" for the current source tree or the commit identifier for a specific commit}
+
+\item{branch, credentials, progressed}{passed on to \code{\link[git2r:clone]{git2r::clone()}}.}
 }
 \value{
-tibble
+data frame (tibble)
 }
 \description{
 Count lines of code, comments and whitespace in a git tree
@@ -20,5 +24,8 @@ Count lines of code, comments and whitespace in a git tree
 \examples{
 \dontrun{
 cloc_git("~/packages/cloc", "3643cd09d4b951b1b35d32dffe35985dfe7756c4")
+
+# from remote git
+cloc_git("git://github.com/hrbrmstr/cloc.git")
 }
 }
