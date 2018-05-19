@@ -18,7 +18,7 @@ purl_rmd_addin <- function() {
 
       cat(ctx$contents, file = tf1, sep = "\n")
 
-      knitr::purl(tf1, output = tf2)
+      knitr::purl(tf1, output = tf2, quiet = TRUE)
 
       navigateToFile(tf2, line = -1L, column = -1L)
 
@@ -29,7 +29,7 @@ purl_rmd_addin <- function() {
       )
 
     } else {
-      stop("Can only style .R and .Rmd files.", call. = FALSE)
+      stop("Can only perform operations on Rmd files.", call. = FALSE)
     }
 
   }

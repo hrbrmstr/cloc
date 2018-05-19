@@ -30,7 +30,7 @@ strip_rmd_addin <- function() {
       )
 
     } else {
-      stop("Can only style .R and .Rmd files.", call. = FALSE)
+      stop("Can only perform operations on .Rmd files.", call. = FALSE)
     }
 
   }
