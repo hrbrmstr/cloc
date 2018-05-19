@@ -19,7 +19,7 @@
 #' # from a url
 #' cloc("https://rud.is/dl/cloc-1.74.tar.gz")
 #' }
-cloc <- function(source, extract_with = NULL) {
+cloc <- function(source = ".", extract_with = NULL) {
 
   perl <- Sys.which("perl")
 

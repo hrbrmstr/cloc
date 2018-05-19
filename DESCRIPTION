@@ -6,7 +6,8 @@ Authors@R: c(
            comment = c(ORCID = "0000-0001-5670-2640")),
     person("Al", "Danial", comment = "cloc perl script", role=c("aut")),
     person("Maëlle", "Salmon", email = "maelle.salmon@yahoo.se", role = c("ctb")), 
-    person("Chris", "Muir", email = "chrismuirrva@gmail.com", role = c("ctb"))
+    person("Chris", "Muir", email = "chrismuirrva@gmail.com", role = c("ctb")),
+    person("Mark", "Padgham", email = "mark.padgham@email.com", role = c("ctb"))
   )
 Description: Counts blank lines, comment lines, and physical lines of source code 
     in source files/trees/archives. An R wrapper to the 'Perl' command-line utility 
