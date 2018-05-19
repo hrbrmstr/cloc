@@ -9,6 +9,7 @@
   other languages used in Rmd code blocks.
 - URLs as sources work in more funtions now
 - cloc_git() can now clone repo when using git:// URLs
+- removed dplyr dependency
 
 # cloc 0.1.0
 

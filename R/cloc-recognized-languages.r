@@ -45,19 +45,24 @@ cloc_reognized_languages <- function() {
 
   dat <- system(cmd, intern = TRUE)
 
-  dplyr::bind_rows(
+  do.call(rbind.data.frame,
     lapply(
       strsplit(dat, "\\("),
       function(.x) {
         lang <- trimws(.x[1])
         extensions <- trimws(.x[2])
         extensions <- sub("\\)", "", extensions)
-        dplyr::data_frame(
+        data.frame(
           lang = lang,
-          extensions = extensions
+          extensions = extensions,
+          stringsAsFactors = FALSE
         )
       }
     )
-  )
+  ) -> out
+
+  class(out) <- c("tbl_df", "tbl", "data.frame")
+
+  out
 
 }

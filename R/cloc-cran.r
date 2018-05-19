@@ -35,15 +35,31 @@ cloc_cran <- function(pkgs,
   ) -> res_p
 
   # call "cloc" on each package archive, bind results into a single data frame
-  if (.progress) pb <- dplyr::progress_estimated(length(res_p$V2))
-  dplyr::bind_rows(
+  if (.progress) {
+    pb <- txtProgressBar(min = 0, max = length(res_p$V2), style = 3)
+    on.exit(close(pb), add = TRUE)
+  }
+
+  i <- 1
+  do.call(rbind.data.frame,
+
     lapply(res_p$V2, function(x) {
-      if (.progress) pb$tick()$print()
+
+      if (.progress) {
+        setTxtProgressBar(pb, i)
+        i <<- i + 1
+      }
+
       ret <- cloc(x)
       if (nrow(ret) > 0) ret$pkg <- res_p[res_p$V2 == x, ]$V1
+
       ret
+
     })
+
   ) -> res
+
+  class(res) <- c("tbl_df", "tbl", "data.frame")
 
   res
 
