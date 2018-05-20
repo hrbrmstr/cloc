@@ -25,7 +25,7 @@
 #' @export
 #' @examples
 #' cloc_reognized_languages()
-cloc_reognized_languages <- function() {
+cloc_recognized_languages <- function() {
 
   perl <- Sys.which("perl")
 

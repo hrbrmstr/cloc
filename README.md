@@ -32,7 +32,7 @@ The following functions are implemented:
     tree
   - `cloc_remove_comments`: Strip comments and white space from a single
     source file
-  - `cloc_reognized_languages`: Return a data frame of ‘cloc’ recognized
+  - `cloc_recognized_languages`: Return a data frame of ‘cloc’ recognized
     languages and associated extensions
   - `cloc_call`: Call ‘cloc.pl’ directly with granular control over
     options

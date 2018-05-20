@@ -4,7 +4,7 @@
 #' @param repo path to git repo; if `repo` is a URL like `git://`, it will be fetched into
 #'        a temporary directory
 #' @param commit "`.`" for the current source tree or the commit identifier for a specific commit
-#' @param branch,credentials,progressed passed on to [git2r::clone()].
+#' @param branch,credentials,progress passed on to [git2r::clone()].
 #' @return data frame (tibble)
 #' @export
 #' @examples \dontrun{

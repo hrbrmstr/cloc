@@ -13,7 +13,7 @@ a temporary directory}
 
 \item{commit}{"\code{.}" for the current source tree or the commit identifier for a specific commit}
 
-\item{branch, credentials, progressed}{passed on to \code{\link[git2r:clone]{git2r::clone()}}.}
+\item{branch, credentials, progress}{passed on to \code{\link[git2r:clone]{git2r::clone()}}.}
 }
 \value{
 data frame (tibble)
