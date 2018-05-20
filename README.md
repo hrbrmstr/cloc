@@ -32,8 +32,8 @@ The following functions are implemented:
     tree
   - `cloc_remove_comments`: Strip comments and white space from a single
     source file
-  - `cloc_recognized_languages`: Return a data frame of ‘cloc’ recognized
-    languages and associated extensions
+  - `cloc_recognized_languages`: Return a data frame of ‘cloc’
+    recognized languages and associated extensions
   - `cloc_call`: Call ‘cloc.pl’ directly with granular control over
     options
   - `cloc_help`: See the command-line help
@@ -48,6 +48,7 @@ devtools::install_github("hrbrmstr/cloc")
 
 ``` r
 library(cloc)
+library(tibble)
 
 # current verison
 packageVersion("cloc")
@@ -95,48 +96,30 @@ Custom CRAN package counter:
 
 ``` r
 cloc_cran(c("archdata", "hrbrthemes", "iptools", "dplyr"))
-#>                     source     language file_count file_count_pct   loc     loc_pct blank_lines blank_line_pct
-#> 1      archdata_1.2.tar.gz         <NA>          0    0.000000000     0 0.000000000           0   0.0000000000
-#> 2  hrbrthemes_0.5.0.tar.gz            R         20    0.689655172   927 0.627198917         183   0.5228571429
-#> 3  hrbrthemes_0.5.0.tar.gz         HTML          2    0.068965517   366 0.247631935          48   0.1371428571
-#> 4  hrbrthemes_0.5.0.tar.gz          CSS          1    0.034482759   113 0.076454668          27   0.0771428571
-#> 5  hrbrthemes_0.5.0.tar.gz          Rmd          3    0.103448276    35 0.023680650          78   0.2228571429
-#> 6  hrbrthemes_0.5.0.tar.gz     Markdown          1    0.034482759    29 0.019621110          14   0.0400000000
-#> 7  hrbrthemes_0.5.0.tar.gz         YAML          2    0.068965517     8 0.005412720           0   0.0000000000
-#> 8     iptools_0.4.0.tar.gz   JavaScript          2    0.074074074  7952 0.864159965         699   0.6927651140
-#> 9     iptools_0.4.0.tar.gz          C++          3    0.111111111   600 0.065203217         109   0.1080277502
-#> 10    iptools_0.4.0.tar.gz            R         17    0.629629630   341 0.037057161          92   0.0911793855
-#> 11    iptools_0.4.0.tar.gz         HTML          2    0.074074074   220 0.023907846          51   0.0505450942
-#> 12    iptools_0.4.0.tar.gz          Rmd          2    0.074074074    48 0.005216257          33   0.0327056492
-#> 13    iptools_0.4.0.tar.gz C/C++ Header          1    0.037037037    41 0.004455553          25   0.0247770069
-#> 14      dplyr_0.7.5.tar.gz            R        148    0.453987730 13216 0.441548896        2671   0.3795651556
-#> 15      dplyr_0.7.5.tar.gz C/C++ Header        125    0.383435583  6687 0.223413852        1836   0.2609066364
-#> 16      dplyr_0.7.5.tar.gz          C++         33    0.101226994  4724 0.157829675         915   0.1300270001
-#> 17      dplyr_0.7.5.tar.gz         HTML         11    0.033742331  3602 0.120343457         367   0.0521529061
-#> 18      dplyr_0.7.5.tar.gz     Markdown          2    0.006134969  1251 0.041796131         619   0.0879636209
-#> 19      dplyr_0.7.5.tar.gz          Rmd          6    0.018404908   421 0.014065684         622   0.0883899389
-#> 20      dplyr_0.7.5.tar.gz            C          1    0.003067485    30 0.001002305           7   0.0009947421
-#>    comment_lines comment_line_pct        pkg
-#> 1              0      0.000000000   archdata
-#> 2            549      0.823088456 hrbrthemes
-#> 3              2      0.002998501 hrbrthemes
-#> 4              0      0.000000000 hrbrthemes
-#> 5            116      0.173913043 hrbrthemes
-#> 6              0      0.000000000 hrbrthemes
-#> 7              0      0.000000000 hrbrthemes
-#> 8            356      0.249649369    iptools
-#> 9            260      0.182328191    iptools
-#> 10           531      0.372370266    iptools
-#> 11             2      0.001402525    iptools
-#> 12            72      0.050490884    iptools
-#> 13           205      0.143758766    iptools
-#> 14          3876      0.672916667      dplyr
-#> 15           267      0.046354167      dplyr
-#> 16           336      0.058333333      dplyr
-#> 17            11      0.001909722      dplyr
-#> 18             0      0.000000000      dplyr
-#> 19          1270      0.220486111      dplyr
-#> 20             0      0.000000000      dplyr
+#> # A tibble: 20 x 11
+#>    source   language file_count file_count_pct    loc loc_pct blank_lines blank_line_pct comment_lines comment_line_pct
+#>    <chr>    <chr>         <dbl>          <dbl>  <dbl>   <dbl>       <dbl>          <dbl>         <dbl>            <dbl>
+#>  1 archdat… <NA>             0.        0.          0. 0.               0.       0.                  0.          0.     
+#>  2 hrbrthe… R               20.        0.690     927. 0.627          183.       0.523             549.          0.823  
+#>  3 hrbrthe… HTML             2.        0.0690    366. 0.248           48.       0.137               2.          0.00300
+#>  4 hrbrthe… CSS              1.        0.0345    113. 0.0765          27.       0.0771              0.          0.     
+#>  5 hrbrthe… Rmd              3.        0.103      35. 0.0237          78.       0.223             116.          0.174  
+#>  6 hrbrthe… Markdown         1.        0.0345     29. 0.0196          14.       0.0400              0.          0.     
+#>  7 hrbrthe… YAML             2.        0.0690      8. 0.00541          0.       0.                  0.          0.     
+#>  8 iptools… JavaScr…         2.        0.0741   7952. 0.864          699.       0.693             356.          0.250  
+#>  9 iptools… C++              3.        0.111     600. 0.0652         109.       0.108             260.          0.182  
+#> 10 iptools… R               17.        0.630     341. 0.0371          92.       0.0912            531.          0.372  
+#> 11 iptools… HTML             2.        0.0741    220. 0.0239          51.       0.0505              2.          0.00140
+#> 12 iptools… Rmd              2.        0.0741     48. 0.00522         33.       0.0327             72.          0.0505 
+#> 13 iptools… C/C++ H…         1.        0.0370     41. 0.00446         25.       0.0248            205.          0.144  
+#> 14 dplyr_0… R              148.        0.454   13216. 0.442         2671.       0.380            3876.          0.673  
+#> 15 dplyr_0… C/C++ H…       125.        0.383    6687. 0.223         1836.       0.261             267.          0.0464 
+#> 16 dplyr_0… C++             33.        0.101    4724. 0.158          915.       0.130             336.          0.0583 
+#> 17 dplyr_0… HTML            11.        0.0337   3602. 0.120          367.       0.0522             11.          0.00191
+#> 18 dplyr_0… Markdown         2.        0.00613  1251. 0.0418         619.       0.0880              0.          0.     
+#> 19 dplyr_0… Rmd              6.        0.0184    421. 0.0141         622.       0.0884           1270.          0.220  
+#> 20 dplyr_0… C                1.        0.00307    30. 0.00100          7.       0.000995            0.          0.     
+#> # ... with 1 more variable: pkg <chr>
 ```
 
 git tree
@@ -146,14 +129,14 @@ cloc_git("~/packages/cloc")
 #> # A tibble: 8 x 10
 #>   source language file_count file_count_pct   loc  loc_pct blank_lines blank_line_pct comment_lines comment_line_pct
 #>   <chr>  <chr>         <int>          <dbl> <int>    <dbl>       <int>          <dbl>         <int>            <dbl>
-#> 1 cloc   Perl              1         0.0417 10578 0.910            838       0.755             1339          0.747  
-#> 2 cloc   R                12         0.500    456 0.0392           135       0.122              316          0.176  
-#> 3 cloc   Markdown          3         0.125    385 0.0331            45       0.0405               0          0.     
-#> 4 cloc   C++               1         0.0417   142 0.0122            41       0.0369              63          0.0352 
-#> 5 cloc   YAML              3         0.125     35 0.00301           14       0.0126               3          0.00167
-#> 6 cloc   Rmd               1         0.0417    22 0.00189           36       0.0324              67          0.0374 
-#> 7 cloc   Java              1         0.0417     8 0.000688           1       0.000901             4          0.00223
-#> 8 cloc   JSON              2         0.0833     2 0.000172           0       0.                   0          0.
+#> 1 cloc   Perl              1         0.0345 10578 0.909            838       0.710             1339          0.730  
+#> 2 cloc   R                16         0.552    596 0.0512           201       0.170              355          0.194  
+#> 3 cloc   Markdown          3         0.103    247 0.0212            47       0.0398               0          0.     
+#> 4 cloc   C++               1         0.0345   142 0.0122            41       0.0347              63          0.0344 
+#> 5 cloc   YAML              3         0.103     35 0.00301           14       0.0119               3          0.00164
+#> 6 cloc   Rmd               1         0.0345    34 0.00292           38       0.0322              70          0.0382 
+#> 7 cloc   Java              1         0.0345     8 0.000687           1       0.000847             4          0.00218
+#> 8 cloc   JSON              3         0.103      3 0.000258           0       0.                   0          0.
 ```
 
 git tree (with specific commit)
@@ -210,7 +193,7 @@ str(cloc_by_file(system.file("extdata", "App.java", package="cloc")))
 Recognized languages
 
 ``` r
-cloc_reognized_languages()
+cloc_recognized_languages()
 #> # A tibble: 238 x 2
 #>    lang           extensions            
 #>    <chr>          <chr>                 
@@ -243,6 +226,27 @@ cat(
 #> kable(head(testRes[["raw.data"]]))
 #> path_to_directory <- system.file("extdata", package = "convertagd")
 #> batch_read_agd(path_to_directory, tz="GMT")
+```
+
+## cloc Results
+
+``` r
+out <- cloc::cloc_pkg()[,-1]
+setNames(
+  out, 
+  c(
+    "Lang",
+    "# Files", "(%)",
+    "LoC", "(%)",
+    "Blank lines", "(%)",
+    "# Lines", "(%)"
+  )
+)
+#> # A tibble: 2 x 9
+#>   Lang  `# Files`  `(%)`   LoC  `(%)` `Blank lines` `(%)` `# Lines` `(%)`
+#>   <chr>     <int>  <dbl> <int>  <dbl>         <int> <dbl>     <int> <dbl>
+#> 1 R            15 0.938    458 0.931            177 0.823       284 0.802
+#> 2 Rmd           1 0.0625    34 0.0691            38 0.177        70 0.198
 ```
 
 ## Code of Conduct

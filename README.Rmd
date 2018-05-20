@@ -53,6 +53,7 @@ options(width=120)
 
 ```{r message=FALSE, warning=FALSE, error=FALSE}
 library(cloc)
+library(tibble)
 
 # current verison
 packageVersion("cloc")
@@ -116,6 +117,22 @@ Strip comments and whitespace from individual source files
 ```{r message=FALSE, warning=FALSE, error=FALSE}
 cat(
   cloc_remove_comments("https://raw.githubusercontent.com/maelle/convertagd/master/README.Rmd")
+)
+```
+
+## cloc Results
+
+```{r}
+out <- cloc::cloc_pkg()[,-1]
+setNames(
+  out, 
+  c(
+    "Lang",
+    "# Files", "(%)",
+    "LoC", "(%)",
+    "Blank lines", "(%)",
+    "# Lines", "(%)"
+  )
 )
 ```
 
