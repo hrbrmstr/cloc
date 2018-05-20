@@ -24,7 +24,7 @@
 #' @return tibble
 #' @export
 #' @examples
-#' cloc_reognized_languages()
+#' cloc_recognized_languages()
 cloc_recognized_languages <- function() {
 
   perl <- Sys.which("perl")

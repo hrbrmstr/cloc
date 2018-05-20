@@ -108,7 +108,7 @@ str(cloc_by_file(system.file("extdata", "App.java", package="cloc")))
 Recognized languages
 
 ```{r message=FALSE, warning=FALSE, error=FALSE}
-cloc_reognized_languages()
+cloc_recognized_languages()
 ```
 
 Strip comments and whitespace from individual source files

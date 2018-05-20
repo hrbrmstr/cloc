@@ -36,7 +36,7 @@ cloc_cran <- function(pkgs,
 
   # call "cloc" on each package archive, bind results into a single data frame
   if (.progress) {
-    pb <- txtProgressBar(min = 0, max = length(res_p$V2), style = 3)
+    pb <- utils::txtProgressBar(min = 0, max = length(res_p$V2), style = 3)
     on.exit(close(pb), add = TRUE)
   }
 
@@ -46,7 +46,7 @@ cloc_cran <- function(pkgs,
     lapply(res_p$V2, function(x) {
 
       if (.progress) {
-        setTxtProgressBar(pb, i)
+        utils::setTxtProgressBar(pb, i)
         i <<- i + 1
       }
 

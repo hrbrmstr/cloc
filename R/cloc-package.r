@@ -62,4 +62,5 @@
 #' @importFrom git2r clone
 #' @importFrom processx run
 #' @importFrom utils read.table contrib.url download.file download.packages tail
+#' @importFrom utils setTxtProgressBar txtProgressBar
 NULL

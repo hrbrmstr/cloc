@@ -35,5 +35,5 @@ just one or two lines for example, seldom have enough information to
 correctly distinguish between MATLAB, Mercury, MUMPS, or Objective C.
 }
 \examples{
-cloc_reognized_languages()
+cloc_recognized_languages()
 }
