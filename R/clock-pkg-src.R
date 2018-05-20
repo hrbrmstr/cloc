@@ -8,7 +8,7 @@
 #' @param extract_with passed into `cloc` command line. This option is only
 #'        needed if cloc is unable to figure out how to extract the contents of
 #'        the input file(s) by itself.
-#' @return tibble
+#' @return data frame (tibble)
 #' @export
 #' @examples
 #' # by dir

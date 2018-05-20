@@ -37,6 +37,7 @@ The following functions are implemented:
 - `cloc_remove_comments`:	Strip comments and white space from a single source file
 - `cloc_recognized_languages`:	Return a data frame of 'cloc' recognized languages and associated extensions
 - `cloc_call`:	Call 'cloc.pl' directly with granular control over options
+- `clock_pkg_md` : Run `cloc_pkg()` on active package and format it as a markdown table for knitting into reports
 - `cloc_help`:	See the command-line help 
 - `cloc_version`:	Retrieve the version of the embedded perl script
 - `cloc_os`:	Ask the embedded perl script to detect the OS type
@@ -120,20 +121,10 @@ cat(
 )
 ```
 
-## cloc Results
+## cloc Metrics
 
-```{r}
-out <- cloc::cloc_pkg()[,-1]
-setNames(
-  out, 
-  c(
-    "Lang",
-    "# Files", "(%)",
-    "LoC", "(%)",
-    "Blank lines", "(%)",
-    "# Lines", "(%)"
-  )
-)
+```{r echo=FALSE}
+cloc_pkg_md()
 ```
 
 ## Code of Conduct

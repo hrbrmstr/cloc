@@ -36,6 +36,8 @@ The following functions are implemented:
     recognized languages and associated extensions
   - `cloc_call`: Call ‘cloc.pl’ directly with granular control over
     options
+  - `clock_pkg_md` : Run `cloc_pkg()` on active package and format it as
+    a markdown table for knitting into reports
   - `cloc_help`: See the command-line help
   - `cloc_version`: Retrieve the version of the embedded perl script
   - `cloc_os`: Ask the embedded perl script to detect the OS type
@@ -129,14 +131,14 @@ cloc_git("~/packages/cloc")
 #> # A tibble: 8 x 10
 #>   source language file_count file_count_pct   loc  loc_pct blank_lines blank_line_pct comment_lines comment_line_pct
 #>   <chr>  <chr>         <int>          <dbl> <int>    <dbl>       <int>          <dbl>         <int>            <dbl>
-#> 1 cloc   Perl              1         0.0345 10578 0.909            838       0.710             1339          0.730  
-#> 2 cloc   R                16         0.552    596 0.0512           201       0.170              355          0.194  
-#> 3 cloc   Markdown          3         0.103    247 0.0212            47       0.0398               0          0.     
-#> 4 cloc   C++               1         0.0345   142 0.0122            41       0.0347              63          0.0344 
-#> 5 cloc   YAML              3         0.103     35 0.00301           14       0.0119               3          0.00164
-#> 6 cloc   Rmd               1         0.0345    34 0.00292           38       0.0322              70          0.0382 
-#> 7 cloc   Java              1         0.0345     8 0.000687           1       0.000847             4          0.00218
-#> 8 cloc   JSON              3         0.103      3 0.000258           0       0.                   0          0.
+#> 1 cloc   Perl              1         0.0323 10578 0.908            838       0.708             1339          0.728  
+#> 2 cloc   R                17         0.548    618 0.0530           205       0.173              360          0.196  
+#> 3 cloc   Markdown          3         0.0968   245 0.0210            47       0.0397               0          0.     
+#> 4 cloc   C++               1         0.0323   142 0.0122            41       0.0346              63          0.0342 
+#> 5 cloc   YAML              3         0.0968    35 0.00300           14       0.0118               3          0.00163
+#> 6 cloc   Rmd               1         0.0323    24 0.00206           38       0.0321              71          0.0386 
+#> 7 cloc   Java              1         0.0323     8 0.000686           1       0.000845             4          0.00217
+#> 8 cloc   JSON              4         0.129      4 0.000343           0       0.                   0          0.
 ```
 
 git tree (with specific commit)
@@ -228,26 +230,12 @@ cat(
 #> batch_read_agd(path_to_directory, tz="GMT")
 ```
 
-## cloc Results
+## cloc Metrics
 
-``` r
-out <- cloc::cloc_pkg()[,-1]
-setNames(
-  out, 
-  c(
-    "Lang",
-    "# Files", "(%)",
-    "LoC", "(%)",
-    "Blank lines", "(%)",
-    "# Lines", "(%)"
-  )
-)
-#> # A tibble: 2 x 9
-#>   Lang  `# Files`  `(%)`   LoC  `(%)` `Blank lines` `(%)` `# Lines` `(%)`
-#>   <chr>     <int>  <dbl> <int>  <dbl>         <int> <dbl>     <int> <dbl>
-#> 1 R            15 0.938    458 0.931            177 0.823       284 0.802
-#> 2 Rmd           1 0.0625    34 0.0691            38 0.177        70 0.198
-```
+| Lang | \# Files |  (%) | LoC |  (%) | Blank lines |  (%) | \# Lines | (%) |
+| :--- | -------: | ---: | --: | ---: | ----------: | ---: | -------: | --: |
+| R    |       16 | 0.94 | 480 | 0.95 |         181 | 0.83 |      289 | 0.8 |
+| Rmd  |        1 | 0.06 |  24 | 0.05 |          38 | 0.17 |       71 | 0.2 |
 
 ## Code of Conduct
 

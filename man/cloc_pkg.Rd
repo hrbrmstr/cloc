@@ -14,7 +14,7 @@ needed if cloc is unable to figure out how to extract the contents of
 the input file(s) by itself.}
 }
 \value{
-tibble
+data frame (tibble)
 }
 \description{
 Think of this as \code{\link[=cloc]{cloc()}} with saner defaults for packages. Skips common
