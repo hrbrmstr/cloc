@@ -1,3 +1,7 @@
+# cloc 0.3.0
+
+- upgraded bundled cloc.pl to 1.80
+
 # cloc 0.2.0
 
 - included a custom `cloc.pl` script (`cloc` pending PR <https://github.com/AlDanial/cloc/pull/294>)

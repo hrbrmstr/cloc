@@ -1,6 +1,6 @@
 Package: cloc
 Title: Count Lines of Code, Comments and Whitespace in Source Files and Archives
-Version: 0.2.0
+Version: 0.3.0
 Authors@R: c(
     person("Bob", "Rudis", email = "bob@rud.is", role = c("aut", "cre"), 
            comment = c(ORCID = "0000-0001-5670-2640")),
@@ -13,6 +13,8 @@ Description: Counts blank lines, comment lines, and physical lines of source cod
     <https://github.com/AlDanial/cloc>.
 SystemRequirements: perl
 Copyright: file inst/COPYRIGHTS
+URL: https://gitlab.com/hrbrmstr/cloc
+BugReports: https://gitlab.com/hrbrmstr/cloc/issues
 Imports:
     rstudioapi (>= 0.5),
     rprojroot,
@@ -21,7 +23,6 @@ Imports:
     htmltools,
     git2r,
     utils, 
-    dplyr,
     processx
 Encoding: UTF-8
 Depends:

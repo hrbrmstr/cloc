@@ -54,7 +54,7 @@ library(tibble)
 
 # current verison
 packageVersion("cloc")
-#> [1] '0.2.0'
+#> [1] '0.3.0'
 ```
 
 Basic usage
@@ -98,29 +98,28 @@ Custom CRAN package counter:
 
 ``` r
 cloc_cran(c("archdata", "hrbrthemes", "iptools", "dplyr"))
-#> # A tibble: 20 x 11
+#> # A tibble: 19 x 11
 #>    source   language file_count file_count_pct    loc loc_pct blank_lines blank_line_pct comment_lines comment_line_pct
 #>    <chr>    <chr>         <dbl>          <dbl>  <dbl>   <dbl>       <dbl>          <dbl>         <dbl>            <dbl>
-#>  1 archdat… <NA>             0.        0.          0. 0.               0.       0.                  0.          0.     
-#>  2 hrbrthe… R               20.        0.690     927. 0.627          183.       0.523             549.          0.823  
-#>  3 hrbrthe… HTML             2.        0.0690    366. 0.248           48.       0.137               2.          0.00300
-#>  4 hrbrthe… CSS              1.        0.0345    113. 0.0765          27.       0.0771              0.          0.     
-#>  5 hrbrthe… Rmd              3.        0.103      35. 0.0237          78.       0.223             116.          0.174  
-#>  6 hrbrthe… Markdown         1.        0.0345     29. 0.0196          14.       0.0400              0.          0.     
-#>  7 hrbrthe… YAML             2.        0.0690      8. 0.00541          0.       0.                  0.          0.     
-#>  8 iptools… JavaScr…         2.        0.0741   7952. 0.864          699.       0.693             356.          0.250  
-#>  9 iptools… C++              3.        0.111     600. 0.0652         109.       0.108             260.          0.182  
-#> 10 iptools… R               17.        0.630     341. 0.0371          92.       0.0912            531.          0.372  
-#> 11 iptools… HTML             2.        0.0741    220. 0.0239          51.       0.0505              2.          0.00140
-#> 12 iptools… Rmd              2.        0.0741     48. 0.00522         33.       0.0327             72.          0.0505 
-#> 13 iptools… C/C++ H…         1.        0.0370     41. 0.00446         25.       0.0248            205.          0.144  
-#> 14 dplyr_0… R              148.        0.454   13216. 0.442         2671.       0.380            3876.          0.673  
-#> 15 dplyr_0… C/C++ H…       125.        0.383    6687. 0.223         1836.       0.261             267.          0.0464 
-#> 16 dplyr_0… C++             33.        0.101    4724. 0.158          915.       0.130             336.          0.0583 
-#> 17 dplyr_0… HTML            11.        0.0337   3602. 0.120          367.       0.0522             11.          0.00191
-#> 18 dplyr_0… Markdown         2.        0.00613  1251. 0.0418         619.       0.0880              0.          0.     
-#> 19 dplyr_0… Rmd              6.        0.0184    421. 0.0141         622.       0.0884           1270.          0.220  
-#> 20 dplyr_0… C                1.        0.00307    30. 0.00100          7.       0.000995            0.          0.     
+#>  1 archdat… <NA>             0.        0.          0. 0.               0.        0.                 0.         0.      
+#>  2 hrbrthe… R               20.        0.690     927. 0.627          183.        0.523            549.         0.823   
+#>  3 hrbrthe… HTML             2.        0.0690    366. 0.248           48.        0.137              2.         0.00300 
+#>  4 hrbrthe… CSS              1.        0.0345    113. 0.0765          27.        0.0771             0.         0.      
+#>  5 hrbrthe… Rmd              3.        0.103      35. 0.0237          78.        0.223            116.         0.174   
+#>  6 hrbrthe… Markdown         1.        0.0345     29. 0.0196          14.        0.0400             0.         0.      
+#>  7 hrbrthe… YAML             2.        0.0690      8. 0.00541          0.        0.                 0.         0.      
+#>  8 iptools… C++              4.        0.143     846. 0.423          167.        0.408            375.         0.289   
+#>  9 iptools… HTML             2.        0.0714    637. 0.319           54.        0.132              2.         0.00154 
+#> 10 iptools… R               19.        0.679     431. 0.216          125.        0.306            625.         0.482   
+#> 11 iptools… Rmd              2.        0.0714     48. 0.0240          33.        0.0807            72.         0.0555  
+#> 12 iptools… C/C++ H…         1.        0.0357     37. 0.0185          30.        0.0733           223.         0.172   
+#> 13 dplyr_0… R              147.        0.461   13231. 0.465         2672.        0.390           3879.         0.673   
+#> 14 dplyr_0… C/C++ H…       125.        0.392    6689. 0.235         1837.        0.268            270.         0.0469  
+#> 15 dplyr_0… C++             33.        0.103    4730. 0.166          920.        0.134            337.         0.0585  
+#> 16 dplyr_0… HTML             5.        0.0157   2040. 0.0718         174.        0.0254             5.         0.000868
+#> 17 dplyr_0… Markdown         2.        0.00627  1289. 0.0453         624.        0.0910             0.         0.      
+#> 18 dplyr_0… Rmd              6.        0.0188    421. 0.0148         622.        0.0907          1270.         0.220   
+#> 19 dplyr_0… C                1.        0.00313    30. 0.00106          7.        0.00102            0.         0.      
 #> # ... with 1 more variable: pkg <chr>
 ```
 
@@ -131,14 +130,14 @@ cloc_git("~/packages/cloc")
 #> # A tibble: 8 x 10
 #>   source language file_count file_count_pct   loc  loc_pct blank_lines blank_line_pct comment_lines comment_line_pct
 #>   <chr>  <chr>         <int>          <dbl> <int>    <dbl>       <int>          <dbl>         <int>            <dbl>
-#> 1 cloc   Perl              1         0.0323 10578 0.908            838       0.708             1339          0.728  
-#> 2 cloc   R                17         0.548    618 0.0530           205       0.173              360          0.196  
-#> 3 cloc   Markdown          3         0.0968   245 0.0210            47       0.0397               0          0.     
-#> 4 cloc   C++               1         0.0323   142 0.0122            41       0.0346              63          0.0342 
-#> 5 cloc   YAML              3         0.0968    35 0.00300           14       0.0118               3          0.00163
-#> 6 cloc   Rmd               1         0.0323    24 0.00206           38       0.0321              71          0.0386 
-#> 7 cloc   Java              1         0.0323     8 0.000686           1       0.000845             4          0.00217
-#> 8 cloc   JSON              4         0.129      4 0.000343           0       0.                   0          0.
+#> 1 cloc   Perl              2         0.0625 21731 0.953           1673       0.827             2630         0.840   
+#> 2 cloc   R                17         0.531    622 0.0273           207       0.102              360         0.115   
+#> 3 cloc   Markdown          3         0.0938   246 0.0108            49       0.0242               0         0.      
+#> 4 cloc   C++               1         0.0312   142 0.00622           41       0.0203              63         0.0201  
+#> 5 cloc   YAML              3         0.0938    35 0.00153           14       0.00692              3         0.000958
+#> 6 cloc   Rmd               1         0.0312    24 0.00105           38       0.0188              71         0.0227  
+#> 7 cloc   Java              1         0.0312     8 0.000351           1       0.000494             4         0.00128 
+#> 8 cloc   JSON              4         0.125      4 0.000175           0       0.                   0         0.
 ```
 
 git tree (with specific commit)
@@ -196,7 +195,7 @@ Recognized languages
 
 ``` r
 cloc_recognized_languages()
-#> # A tibble: 238 x 2
+#> # A tibble: 242 x 2
 #>    lang           extensions            
 #>    <chr>          <chr>                 
 #>  1 ABAP           abap                  
@@ -209,7 +208,7 @@ cloc_recognized_languages()
 #>  8 ANTLR Grammar  g, g4                 
 #>  9 Apex Trigger   trigger               
 #> 10 Arduino Sketch ino, pde              
-#> # ... with 228 more rows
+#> # ... with 232 more rows
 ```
 
 Strip comments and whitespace from individual source files
@@ -234,7 +233,7 @@ cat(
 
 | Lang | \# Files |  (%) | LoC |  (%) | Blank lines |  (%) | \# Lines | (%) |
 | :--- | -------: | ---: | --: | ---: | ----------: | ---: | -------: | --: |
-| R    |       16 | 0.94 | 480 | 0.95 |         181 | 0.83 |      289 | 0.8 |
+| R    |       16 | 0.94 | 484 | 0.95 |         183 | 0.83 |      289 | 0.8 |
 | Rmd  |        1 | 0.06 |  24 | 0.05 |          38 | 0.17 |       71 | 0.2 |
 
 ## Code of Conduct

@@ -3,7 +3,7 @@ test_that("core bits are functioning as expected", {
 
   langs <- cloc_recognized_languages()
   expect_equal(langs$lang[4], "ADSO/IDSM")
-  expect_equal(cloc_version(), "1.77")
+  expect_equal(cloc_version(), "1.80")
   expect_is(cloc_os(), "character")
 
 

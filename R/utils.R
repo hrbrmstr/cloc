@@ -1,6 +1,12 @@
+setNames <- function(object = nm, nm)  {
+  names(object) <- nm
+  object
+}
+
 is_url <- function (path) { grepl("^(git|http|ftp)s?://", path) }
 
 find_perl <- function() {
+
   perl <- Sys.which("perl")
 
   if (perl == "") {
