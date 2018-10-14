@@ -70,11 +70,11 @@ cloc(system.file("extdata", package="cloc"))
 #> 3 extdata Java              1          0.333     8  0.0278           1         0.0152             4           0.0290
 
 # by file
-cloc(system.file("extdata", "App.java", package="cloc"))
+cloc(system.file("extdata", "qrencoder.cpp", package="cloc"))
 #> # A tibble: 1 x 10
-#>   source   language file_count file_count_pct   loc loc_pct blank_lines blank_line_pct comment_lines comment_line_pct
-#>   <chr>    <chr>         <int>          <dbl> <int>   <dbl>       <int>          <dbl>         <int>            <dbl>
-#> 1 App.java Java              1             1.     8      1.           1             1.             4               1.
+#>   source     language file_count file_count_pct   loc loc_pct blank_lines blank_line_pct comment_lines comment_line_pct
+#>   <chr>      <chr>         <int>          <dbl> <int>   <dbl>       <int>          <dbl>         <int>            <dbl>
+#> 1 qrencoder… C++               1             1.   142      1.          41             1.            63               1.
 
 # from a url
 cloc("https://rud.is/dl/cloc-1.74.tar.gz")
@@ -127,17 +127,16 @@ git tree
 
 ``` r
 cloc_git("~/packages/cloc")
-#> # A tibble: 8 x 10
+#> # A tibble: 7 x 10
 #>   source language file_count file_count_pct   loc  loc_pct blank_lines blank_line_pct comment_lines comment_line_pct
 #>   <chr>  <chr>         <int>          <dbl> <int>    <dbl>       <int>          <dbl>         <int>            <dbl>
-#> 1 cloc   Perl              2         0.0625 21731 0.953           1673       0.827             2630         0.840   
-#> 2 cloc   R                17         0.531    622 0.0273           207       0.102              360         0.115   
-#> 3 cloc   Markdown          3         0.0938   246 0.0108            49       0.0242               0         0.      
-#> 4 cloc   C++               1         0.0312   142 0.00622           41       0.0203              63         0.0201  
-#> 5 cloc   YAML              3         0.0938    35 0.00153           14       0.00692              3         0.000958
-#> 6 cloc   Rmd               1         0.0312    24 0.00105           38       0.0188              71         0.0227  
-#> 7 cloc   Java              1         0.0312     8 0.000351           1       0.000494             4         0.00128 
-#> 8 cloc   JSON              4         0.125      4 0.000175           0       0.                   0         0.
+#> 1 cloc   Perl              1         0.0333 11153 0.912            835         0.705           1291          0.722  
+#> 2 cloc   R                17         0.567    622 0.0509           207         0.175            360          0.201  
+#> 3 cloc   Markdown          3         0.100    246 0.0201            49         0.0414             0          0.     
+#> 4 cloc   C++               1         0.0333   142 0.0116            41         0.0346            63          0.0352 
+#> 5 cloc   YAML              3         0.100     35 0.00286           14         0.0118             3          0.00168
+#> 6 cloc   Rmd               1         0.0333    24 0.00196           38         0.0321            71          0.0397 
+#> 7 cloc   JSON              4         0.133      4 0.000327           0         0.                 0          0.
 ```
 
 git tree (with specific commit)
@@ -181,14 +180,14 @@ str(cloc_by_file(system.file("extdata", package="cloc")))
 #>  $ comment_lines: int  63 71 4
 
 # single file
-str(cloc_by_file(system.file("extdata", "App.java", package="cloc")))
+str(cloc_by_file(system.file("extdata", "qrencoder.cpp", package="cloc")))
 #> Classes 'tbl_df', 'tbl' and 'data.frame':    1 obs. of  6 variables:
-#>  $ source       : chr "App.java"
-#>  $ filename     : chr "/Library/Frameworks/R.framework/Versions/3.5/Resources/library/cloc/extdata/App.java"
-#>  $ language     : chr "Java"
-#>  $ loc          : int 8
-#>  $ blank_lines  : int 1
-#>  $ comment_lines: int 4
+#>  $ source       : chr "qrencoder.cpp"
+#>  $ filename     : chr "/Library/Frameworks/R.framework/Versions/3.5/Resources/library/cloc/extdata/qrencoder.cpp"
+#>  $ language     : chr "C++"
+#>  $ loc          : int 142
+#>  $ blank_lines  : int 41
+#>  $ comment_lines: int 63
 ```
 
 Recognized languages

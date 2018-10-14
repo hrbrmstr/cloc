@@ -67,7 +67,7 @@ Basic usage
 cloc(system.file("extdata", package="cloc"))
 
 # by file
-cloc(system.file("extdata", "App.java", package="cloc"))
+cloc(system.file("extdata", "qrencoder.cpp", package="cloc"))
 
 # from a url
 cloc("https://rud.is/dl/cloc-1.74.tar.gz")
@@ -104,7 +104,7 @@ Detailed results by file
 str(cloc_by_file(system.file("extdata", package="cloc")))
 
 # single file
-str(cloc_by_file(system.file("extdata", "App.java", package="cloc")))
+str(cloc_by_file(system.file("extdata", "qrencoder.cpp", package="cloc")))
 ```
 
 Recognized languages

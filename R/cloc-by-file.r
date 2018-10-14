@@ -13,7 +13,7 @@
 #' str(cloc_by_file(system.file("extdata", package="cloc")))
 #'
 #' # single file
-#' str(cloc_by_file(system.file("extdata", "App.java", package="cloc")))
+#' str(cloc_by_file(system.file("extdata", "qrencoder.cpp", package="cloc")))
 cloc_by_file <- function(source, extract_with=NULL) {
 
   perl <- find_perl()
