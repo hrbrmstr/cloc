@@ -27,5 +27,5 @@ Unlike it's \code{cloc()} counterpart, no percentages are reported by this funct
 str(cloc_by_file(system.file("extdata", package="cloc")))
 
 # single file
-str(cloc_by_file(system.file("extdata", "App.java", package="cloc")))
+str(cloc_by_file(system.file("extdata", "qrencoder.cpp", package="cloc")))
 }

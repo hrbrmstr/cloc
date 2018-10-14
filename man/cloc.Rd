@@ -24,7 +24,7 @@ Count lines of code, comments and whitespace in source files/archives
 cloc(system.file("extdata", package="cloc"))
 
 # by file
-cloc(system.file("extdata", "App.java", package="cloc"))
+cloc(system.file("extdata", "qrencoder.cpp", package="cloc"))
 
 # requires a network connection therefore is set for you to run it manually
 \dontrun{
