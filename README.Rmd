@@ -1,5 +1,7 @@
 ---
 output: rmarkdown::github_document
+editor_options: 
+  chunk_output_type: console
 ---
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
@@ -81,14 +83,26 @@ cloc_cran(c("archdata", "hrbrthemes", "iptools", "dplyr"))
 
 git tree 
 
-```{r message=FALSE, warning=FALSE, error=FALSE}
+```{r message=FALSE, warning=FALSE, error=FALSE, eval=FALSE}
 cloc_git("~/packages/cloc")
+##   source language file_count file_count_pct   loc      loc_pct blank_lines blank_line_pct comment_lines comment_line_pct
+## 1   cloc     Perl          1      0.1111111 10059 0.9867569158         787    0.910879630          1292     0.9570370370
+## 2   cloc Markdown          2      0.2222222    60 0.0058858152          31    0.035879630             0     0.0000000000
+## 3   cloc        R          4      0.4444444    52 0.0051010398          22    0.025462963            25     0.0185185185
+## 4   cloc      Rmd          1      0.1111111    13 0.0012752600          21    0.024305556            32     0.0237037037
+## 5   cloc     YAML          1      0.1111111    10 0.0009809692           3    0.003472222             1     0.0007407407
 ```
 
 git tree (with specific commit)
 
-```{r message=FALSE, warning=FALSE, error=FALSE}
+```{r message=FALSE, warning=FALSE, error=FALSE, eval=FALSE}
 cloc_git("~/packages/cloc", "3643cd09d4b951b1b35d32dffe35985dfe7756c4")
+##   source language file_count file_count_pct   loc      loc_pct blank_lines blank_line_pct comment_lines comment_line_pct
+## 1   cloc     Perl          1      0.1111111 10059 0.9867569158         787    0.910879630          1292     0.9570370370
+## 2   cloc Markdown          2      0.2222222    60 0.0058858152          31    0.035879630             0     0.0000000000
+## 3   cloc        R          4      0.4444444    52 0.0051010398          22    0.025462963            25     0.0185185185
+## 4   cloc      Rmd          1      0.1111111    13 0.0012752600          21    0.024305556            32     0.0237037037
+## 5   cloc     YAML          1      0.1111111    10 0.0009809692           3    0.003472222             1     0.0007407407
 ```
 
 remote git tree
