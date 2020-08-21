@@ -41,21 +41,39 @@ cloc_pkg <- function(source = ".", extract_with = NULL) {
 
   # make the command line
 
-  sprintf(
-    "%s %s --exclude-ext=yml,md,Rproj --exclude-dir=.Rproj,.Rproj.user,.git,inst,man,docs,tools --quiet --csv %s",
-    perl,
+  c(
     system.file("bin/cloc.pl", package = "cloc"),
+    "--exclude-ext=yml,md,Rproj",
+    "--exclude-dir=.Rproj,.Rproj.user,.git,inst,man,docs,tools",
+    "--quiet",
+    "--csv",
     source
-  ) -> cmd
+  ) -> args
 
   # tack on the "--extract-with" value (if specified)
-  if (!is.null(extract_with)) cmd <- sprintf('%s --extract-with="%s"', cmd, extract_with)
+  if (!is.null(extract_with)) {
+    cmd <- c(args, sprintf('--extract-with="%s"', extract_with))
+  }
+
+  processx::run(
+    command = perl,
+    args = args
+  ) -> res
+
+  dat <- res$stdout
+
+  # sprintf(
+  #   "%s %s --exclude-ext=yml,md,Rproj --exclude-dir=.Rproj,.Rproj.user,.git,inst,man,docs,tools --quiet --csv %s",
+  #   perl,
+  #   shQuote(system.file("bin/cloc.pl", package = "cloc")),
+  #   source
+  # ) -> cmd
 
   # run the perl script
-  dat <- system(cmd, intern = TRUE)
+  # dat <- system(cmd, intern = TRUE)
 
   # nothing to count
-  if (length(dat) == 0) {
+  if (nzchar(dat) == 0) {
     return(
       data.frame(
         source = basename(source),
@@ -72,6 +90,8 @@ cloc_pkg <- function(source = ".", extract_with = NULL) {
       )
     )
   }
+
+  dat <- unlist(strsplit(dat, "\r?\n"))
 
   # read in the output from the perl script
   fil <- read.table(

@@ -1,6 +1,7 @@
 Package: cloc
 Title: Count Lines of Code, Comments and Whitespace in Source Files and Archives
-Version: 0.3.0
+Version: 0.3.5
+Date: 2020-08-21
 Authors@R: c(
     person("Bob", "Rudis", email = "bob@rud.is", role = c("aut", "cre"), 
            comment = c(ORCID = "0000-0001-5670-2640")),
@@ -26,10 +27,10 @@ Imports:
     processx
 Encoding: UTF-8
 Depends:
-    R (>= 3.2.0)
+    R (>= 3.6.0)
 License: MIT + file LICENSE
 LazyData: true
 Suggests: 
     testthat,
     covr
-RoxygenNote: 6.1.1
+RoxygenNote: 7.1.1

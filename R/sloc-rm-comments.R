@@ -27,13 +27,12 @@ cloc_remove_comments <- function(source_file) {
   stopifnot(file.exists(source_file))
 
   # make the command line
-
-  sprintf(
-    "%s %s --strip-comments=nc %s",
-    perl,
-    system.file("bin/cloc.pl", package = "cloc"),
-    source_file
-  ) -> cmd
+  # sprintf(
+  #   "%s %s --strip-comments=nc %s",
+  #   perl,
+  #   shQuote(system.file("bin/cloc.pl", package = "cloc")),
+  #   source_file
+  # ) -> cmd
 
   td <- tempdir()
   curr_dir <- getwd()
@@ -41,7 +40,20 @@ cloc_remove_comments <- function(source_file) {
 
   setwd(td)
 
-  dat <- system(cmd, intern = TRUE)
+  c(
+    system.file("bin/cloc.pl", package = "cloc"),
+    "--strip-comments=nc",
+    source_file
+  ) -> args
+
+  processx::run(
+    command = perl,
+    args = args
+  ) -> res
+
+  dat <- res$stdout
+
+  # dat <- system(cmd, intern = TRUE)
 
   paste0(
     readLines(

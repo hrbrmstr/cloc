@@ -36,14 +36,28 @@ cloc_recognized_languages <- function() {
     )
   }
 
-  sprintf(
-    "%s %s --show-lang",
-    perl,
+  c(
     system.file("bin/cloc.pl", package = "cloc"),
-    source
-  ) -> cmd
+    "--show-lang"
+  ) -> args
 
-  dat <- system(cmd, intern = TRUE)
+  processx::run(
+    command = perl,
+    args = args
+  ) -> res
+
+  dat <- res$stdout
+
+  dat <- unlist(strsplit(dat, "\r?\n"))
+
+  # sprintf(
+  #   "%s %s --show-lang",
+  #   perl,
+  #   shQuote(system.file("bin/cloc.pl", package = "cloc")),
+  #   source
+  # ) -> cmd
+  #
+  # dat <- system(cmd, intern = TRUE)
 
   do.call(rbind.data.frame,
     lapply(

@@ -4,11 +4,16 @@
 \alias{cloc_git}
 \title{Count lines of code, comments and whitespace in a git tree}
 \usage{
-cloc_git(repo, commit = ".", branch = NULL, credentials = NULL,
-  progress = FALSE)
+cloc_git(
+  repo,
+  commit = ".",
+  branch = NULL,
+  credentials = NULL,
+  progress = FALSE
+)
 }
 \arguments{
-\item{repo}{path to git repo; if \code{repo} is a URL like \code{git://}, it will be fetched into
+\item{repo}{path to git repo; if \code{repo} is a URL like \verb{git://}, it will be fetched into
 a temporary directory}
 
 \item{commit}{"\code{.}" for the current source tree or the commit identifier for a specific commit}

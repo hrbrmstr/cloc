@@ -1,9 +1,11 @@
-context("cloc works (get it?")
+context("cloc works (get it?)")
 test_that("core bits are functioning as expected", {
 
   langs <- cloc_recognized_languages()
   expect_equal(langs$lang[4], "ADSO/IDSM")
-  expect_equal(cloc_version(), "1.80")
+
+  expect_equal(cloc_version(), "1.86")
+
   expect_is(cloc_os(), "character")
 
 
@@ -25,7 +27,7 @@ test_that("core bits are functioning as expected", {
 
   bf <- cloc_by_file(system.file("extdata", "qrencoder.cpp", package="cloc"))
 
-  expect_equal(bf$loc, 142)
+  expect_equal(bf$loc[1], 142)
 
 })
 

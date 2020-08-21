@@ -31,23 +31,43 @@ cloc_by_file <- function(source, extract_with=NULL) {
 
   stopifnot(file.exists(source))
 
-  # make the command line
-
-  sprintf(
-    "%s %s --quiet --by-file --csv %s",
-    perl,
+  c(
     system.file("bin/cloc.pl", package = "cloc"),
+    "--quiet",
+    "--by-file",
+    "--csv",
     source
-  ) -> cmd
+  ) -> args
 
   # tack on the "--extract-with" value (if specified)
-  if (!is.null(extract_with)) cmd <- sprintf('%s --extract-with="%s"', cmd, extract_with)
+  if (!is.null(extract_with)) {
+    cmd <- c(args, sprintf('--extract-with="%s"', extract_with))
+  }
 
-  # run the perl script
-  dat <- system(cmd, intern = TRUE)
+  processx::run(
+    command = perl,
+    args = args
+  ) -> res
+
+  dat <- res$stdout
+
+  # # make the command line
+  #
+  # sprintf(
+  #   "%s %s --quiet --by-file --csv %s",
+  #   perl,
+  #   shQuote(system.file("bin/cloc.pl", package = "cloc")),
+  #   source
+  # ) -> cmd
+  #
+  # # tack on the "--extract-with" value (if specified)
+  # if (!is.null(extract_with)) cmd <- sprintf('%s --extract-with="%s"', cmd, extract_with)
+  #
+  # # run the perl script
+  # dat <- system(cmd, intern = TRUE)
 
   # nothing to count
-  if (length(dat) == 0) {
+  if (nzchar(dat) == 0) {
     return(
       data.frame(
         source = basename(source),
@@ -60,6 +80,8 @@ cloc_by_file <- function(source, extract_with=NULL) {
       )
     )
   }
+
+  dat <- unlist(strsplit(dat, "\r?\n"))
 
   # read in the output from the perl script
   fil <- read.table(

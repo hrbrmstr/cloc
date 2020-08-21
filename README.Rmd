@@ -3,63 +3,41 @@ output: rmarkdown::github_document
 editor_options: 
   chunk_output_type: console
 ---
-
-<!-- README.md is generated from README.Rmd. Please edit that file -->
-
-```{r, echo = FALSE}
-knitr::opts_chunk$set(
-  collapse = TRUE,
-  comment = "#>",
-  fig.path = "README-"
-)
+```{r pkg-knitr-opts, include=FALSE}
+hrbrpkghelpr::global_opts()
 ```
 
-[![Travis-CI Build Status](https://travis-ci.org/hrbrmstr/cloc.svg?branch=master)](https://travis-ci.org/hrbrmstr/cloc) 
-[![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/hrbrmstr/cloc?branch=master&svg=true)](https://ci.appveyor.com/project/hrbrmstr/cloc) 
-[![Coverage Status](https://img.shields.io/codecov/c/github/hrbrmstr/cloc/master.svg)](https://codecov.io/github/hrbrmstr/cloc?branch=master)
+```{r badges, results='asis', echo=FALSE, cache=FALSE}
+hrbrpkghelpr::stinking_badges()
+```
 
-# cloc
-
-Count Lines of Code, Comments and Whitespace in Source Files and Archives
-
-## Description
-
-Counts blank lines, comment lines, and physical lines of source code in source 
-files/trees/archives. An R wrapper to the Perl `cloc` utility 
-<https://github.com/AlDanial/cloc> by @AlDanial.
+```{r description, results='asis', echo=FALSE, cache=FALSE}
+hrbrpkghelpr::yank_title_and_description()
+```
 
 ## What's Inside The Tin
 
 The following functions are implemented:
 
-- `cloc`:	Count lines of code, comments and whitespace in source files/archives
-- `cloc_by_file`:	Count lines of code, comments and whitespace in source files/archives by file
-- `cloc_cran`:	Count lines of code (etc) from source packages on CRAN
-- `cloc_git`:	Count lines of code, comments and whitespace in a git tree
-- `cloc_remove_comments`:	Strip comments and white space from a single source file
-- `cloc_recognized_languages`:	Return a data frame of 'cloc' recognized languages and associated extensions
-- `cloc_call`:	Call 'cloc.pl' directly with granular control over options
-- `clock_pkg_md` : Run `cloc_pkg()` on active package and format it as a markdown table for knitting into reports
-- `cloc_help`:	See the command-line help 
-- `cloc_version`:	Retrieve the version of the embedded perl script
-- `cloc_os`:	Ask the embedded perl script to detect the OS type
+```{r ingredients, results='asis', echo=FALSE, cache=FALSE}
+hrbrpkghelpr::describe_ingredients()
+```
+
+## Installation
+
+```{r install-ex, results='asis', echo=FALSE, cache=FALSE}
+hrbrpkghelpr::install_block()
+```
 
 ## Usage
 
-```{r eval=FALSE}
-devtools::install_github("hrbrmstr/cloc")
-```
-
-```{r echo=FALSE, message=FALSE, warning=FALSE, error=FALSE}
-options(width=120)
-```
-
-```{r message=FALSE, warning=FALSE, error=FALSE}
+```{r lib-ex}
 library(cloc)
-library(tibble)
+library(tibble) # for printing
 
-# current verison
+# current version
 packageVersion("cloc")
+
 ```
 
 Basic usage
@@ -143,5 +121,4 @@ cloc_pkg_md()
 
 ## Code of Conduct
 
-Please note that this project is released with a [Contributor Code of Conduct](CONDUCT.md). 
-By participating in this project you agree to abide by its terms.
+Please note that this project is released with a Contributor Code of Conduct. By participating in this project you agree to abide by its terms.

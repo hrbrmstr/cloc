@@ -4,16 +4,19 @@
 \alias{cloc_cran}
 \title{Count lines of code (etc) from source packages on CRAN}
 \usage{
-cloc_cran(pkgs, repos = getOption("repos"),
+cloc_cran(
+  pkgs,
+  repos = getOption("repos"),
   contrib_url = utils::contrib.url(repos, "source"),
-  .progress = interactive())
+  .progress = interactive()
+)
 }
 \arguments{
 \item{pkgs}{names of packages}
 
 \item{repos}{character vector, the base URL(s) of the repositories to use,
-i.e., the URL of the CRAN master such as "\code{https://cran.r-project.org}"
-or its Statlib mirror, "\code{http://lib.stat.cmu.edu/R/CRAN}".}
+i.e., the URL of the CRAN master such as "\verb{https://cran.r-project.org}"
+or its Statlib mirror, "\verb{http://lib.stat.cmu.edu/R/CRAN}".}
 
 \item{contrib_url}{URL(s) of the contrib sections of the repositories. Use
 this argument only if your repository mirror is incomplete, e.g.,

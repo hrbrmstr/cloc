@@ -11,7 +11,7 @@ files/trees/archives. An R wrapper to the Perl \code{cloc} utility
 }
 \section{How it works}{
 
-\code{cloc}'s method of operation resembles \href{https://www.dwheeler.com/sloccount/}{SLOCCount}'s:
+\code{cloc}'s method of operation resembles \href{https://www.dwheeler.com/sloccount/}{\code{SLOCCount}}'s:
 First, create a list of files to consider. Next, attempt to determine whether or not
 found files contain recognized computer language source code. Finally, for files
 identified as source files, invoke language-specific routines to count the number of
@@ -37,7 +37,7 @@ associates with programming languages. Files which match are classified as
 containing source
 code for that language. Each file without an extensions is opened
 and its first line read to see if it is a Unix shell script
-(anything that begins with \code{#!}). If it is shell script, the file is
+(anything that begins with \verb{#!}). If it is shell script, the file is
 classified by that scripting language (if the language is
 recognized). If the file does not have a recognized extension or is
 not a recognzied scripting language, the file is ignored.
@@ -49,8 +49,8 @@ for known programming languages. For each of these files:
 \item Remove blank lines, then count again (= L \emph{non-blank}).
 \item Loop over the comment filters defined for this language. (For
 example, C++ as two filters: (1) remove lines that start with
-optional whitespace followed by \code{//} and (2) remove text between
-\code{/*} and \code{*/}) Apply each filter to the code to remove comments.
+optional whitespace followed by \verb{//} and (2) remove text between
+\verb{/*} and \verb{*/}) Apply each filter to the code to remove comments.
 Count the left over lines (= L \emph{code}).
 \item Save the counts for this language:
 \itemize{
