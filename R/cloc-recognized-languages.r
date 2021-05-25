@@ -27,14 +27,7 @@
 #' cloc_recognized_languages()
 cloc_recognized_languages <- function() {
 
-  perl <- Sys.which("perl")
-
-  if (perl == "") {
-    stop(
-      "Cannot find 'perl'. cloc requires perl to be installed and on the PATH.",
-      call. = FALSE
-    )
-  }
+  perl <- find_perl()
 
   c(
     system.file("bin/cloc.pl", package = "cloc"),
