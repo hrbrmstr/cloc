@@ -1,3 +1,5 @@
+# nolint start
+
 #' Run [cloc_pkg()] on active package and format it as a markdown table for knitting into reports
 #'
 #' @md
@@ -25,7 +27,9 @@ cloc_pkg_md <- function() {
     ),
     format = "markdown",
     digits = 2,
-    caption = sprintf("clock Package Metrics for %s", pkg_name)
+    caption = sprintf("{cloc} 📦 metrics for %s", pkg_name)
   )
 
 }
+
+# nolint end

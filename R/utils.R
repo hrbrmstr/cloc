@@ -1,3 +1,5 @@
+# nolint start
+
 setNames <- function(object = nm, nm)  {
   names(object) <- nm
   object
@@ -21,3 +23,5 @@ find_perl <- function() {
 }
 
 is_rmd_file <- function(path) { grepl("\\.Rmd$", path, ignore.case = TRUE) }
+
+# nolint end

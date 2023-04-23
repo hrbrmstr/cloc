@@ -1,3 +1,5 @@
+# nolint start
+
 #' Count lines of code, comments and whitespace in a package
 #'
 #' Think of this as [cloc()] with saner defaults for packages. Skips common
@@ -121,3 +123,5 @@ cloc_pkg <- function(source = ".", extract_with = NULL) {
   fil
 
 }
+
+# nolint end

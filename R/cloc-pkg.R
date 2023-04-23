@@ -1,3 +1,5 @@
+# nolint start
+
 #' @keywords internal
 cloc_pkg_addin <- function() {
 
@@ -37,3 +39,5 @@ cloc_pkg_addin <- function() {
 
 }
 
+
+# nolint end

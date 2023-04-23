@@ -1,3 +1,5 @@
+# nolint start
+
 #' Count lines of code, comments and whitespace in source files/archives
 #'
 #' @md
@@ -118,3 +120,5 @@ cloc <- function(source = ".", extract_with = NULL) {
   fil
 
 }
+
+# nolint end

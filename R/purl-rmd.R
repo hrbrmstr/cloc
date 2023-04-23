@@ -1,3 +1,5 @@
+# nolint start
+
 
 #' @keywords internal
 purl_rmd_addin <- function() {
@@ -35,3 +37,5 @@ purl_rmd_addin <- function() {
   }
 
 }
+
+# nolint end

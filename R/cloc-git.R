@@ -1,3 +1,5 @@
+# nolint start
+
 #' Count lines of code, comments and whitespace in a git tree
 #'
 #' @md
@@ -109,3 +111,5 @@ cloc_git <- function(repo, commit=".", branch = NULL, credentials = NULL, progre
   fil
 
 }
+
+# nolint end

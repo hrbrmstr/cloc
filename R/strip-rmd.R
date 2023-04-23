@@ -1,3 +1,5 @@
+# nolint start
+
 #' @keywords internal
 strip_rmd_addin <- function() {
 
@@ -36,3 +38,5 @@ strip_rmd_addin <- function() {
   }
 
 }
+
+# nolint end

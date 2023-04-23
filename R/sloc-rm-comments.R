@@ -1,3 +1,5 @@
+# nolint start
+
 #' Strip comments and white space from a single source file
 #'
 #' Pass in a path to a source file and retrieve a version of the source file
@@ -68,3 +70,5 @@ cloc_remove_comments <- function(source_file) {
   return(lines)
 
 }
+
+# nolint end
