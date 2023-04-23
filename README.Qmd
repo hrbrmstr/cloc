@@ -1,5 +1,5 @@
 ---
-output: rmarkdown::github_document
+format: gfm
 editor_options: 
   chunk_output_type: console
 ---
@@ -42,7 +42,7 @@ packageVersion("cloc")
 
 Basic usage
 
-```{r message=FALSE, warning=FALSE, error=FALSE}
+```{r cloc-basic, message=FALSE, warning=FALSE, error=FALSE}
 # by dir
 cloc(system.file("extdata", package="cloc"))
 
@@ -55,13 +55,13 @@ cloc("https://rud.is/dl/cloc-1.74.tar.gz")
 
 Custom CRAN package counter:
 
-```{r message=FALSE, warning=FALSE, error=FALSE}
+```{r cloc-cran, message=FALSE, warning=FALSE, error=FALSE}
 cloc_cran(c("archdata", "hrbrthemes", "iptools", "dplyr"))
 ```
 
 git tree 
 
-```{r message=FALSE, warning=FALSE, error=FALSE, eval=FALSE}
+```{r cloc-git-tree, message=FALSE, warning=FALSE, error=FALSE, eval=FALSE}
 cloc_git("~/packages/cloc")
 ##   source language file_count file_count_pct   loc      loc_pct blank_lines blank_line_pct comment_lines comment_line_pct
 ## 1   cloc     Perl          1      0.1111111 10059 0.9867569158         787    0.910879630          1292     0.9570370370
@@ -73,7 +73,7 @@ cloc_git("~/packages/cloc")
 
 git tree (with specific commit)
 
-```{r message=FALSE, warning=FALSE, error=FALSE, eval=FALSE}
+```{r cloc-git-tree-commit, message=FALSE, warning=FALSE, error=FALSE, eval=FALSE}
 cloc_git("~/packages/cloc", "3643cd09d4b951b1b35d32dffe35985dfe7756c4")
 ##   source language file_count file_count_pct   loc      loc_pct blank_lines blank_line_pct comment_lines comment_line_pct
 ## 1   cloc     Perl          1      0.1111111 10059 0.9867569158         787    0.910879630          1292     0.9570370370
@@ -85,13 +85,13 @@ cloc_git("~/packages/cloc", "3643cd09d4b951b1b35d32dffe35985dfe7756c4")
 
 remote git tree
 
-```{r message=FALSE, warning=FALSE, error=FALSE}
-cloc_git("git://github.com/maelle/convertagd.git")
+```{r cloc-remote-git-tree, message=FALSE, warning=FALSE, error=FALSE}
+cloc_git("https://github.com/maelle/convertagd.git")
 ```
 
 Detailed results by file
 
-```{r message=FALSE, warning=FALSE, error=FALSE}
+```{r cloc-detailed, message=FALSE, warning=FALSE, error=FALSE}
 # whole dir
 str(cloc_by_file(system.file("extdata", package="cloc")))
 
@@ -101,13 +101,13 @@ str(cloc_by_file(system.file("extdata", "qrencoder.cpp", package="cloc")))
 
 Recognized languages
 
-```{r message=FALSE, warning=FALSE, error=FALSE}
+```{r cloc-langs, message=FALSE, warning=FALSE, error=FALSE}
 cloc_recognized_languages()
 ```
 
 Strip comments and whitespace from individual source files
 
-```{r message=FALSE, warning=FALSE, error=FALSE}
+```{r cloc-strip, message=FALSE, warning=FALSE, error=FALSE}
 cat(
   cloc_remove_comments("https://raw.githubusercontent.com/maelle/convertagd/master/README.Rmd")
 )
@@ -115,7 +115,7 @@ cat(
 
 ## cloc Metrics
 
-```{r echo=FALSE}
+```{r cloc-metrics, echo=FALSE}
 cloc_pkg_md()
 ```
 
